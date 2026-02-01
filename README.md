@@ -25,10 +25,16 @@ This approach is particularly beneficial when running many queries on the same c
 ## Dataset
 
 The synthetic test dataset includes:
-- **20 contexts**: A mix of science/history/technical topics and prose/reading comprehension narratives
-- **280 micro-queries**: All yes/no questions with expected answers for validation
+- **41 contexts**: A mix of science/history/technical topics and prose/reading comprehension narratives
+- **487 micro-queries**: All yes/no questions with expected answers for validation
 
-Each context has 10-21 associated micro-queries that test factual understanding of the text.
+Topics covered:
+- Science: Solar system, photosynthesis, DNA, quantum mechanics, heart, climate change, plate tectonics, water cycle, immune system, viruses, biomes, cellular respiration
+- History: Industrial Revolution, American Civil War, Renaissance, French Revolution, World War I, Ancient Egypt
+- Technology: Machine learning, binary code, electricity, stock market
+- Narratives: 10 reading comprehension stories with daily life scenarios
+
+Each context has 8-21 associated micro-queries that test factual understanding of text.
 
 ## Benchmark Results (Qwen2.5-0.5B-Instruct)
 
