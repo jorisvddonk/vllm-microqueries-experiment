@@ -186,6 +186,18 @@ Adjust GPU memory utilization (default 0.8):
 python microqueries.py --gpu-memory-utilization 0.5
 ```
 
+Specify output file paths:
+
+```bash
+python microqueries.py --output my_results.tsv --summary my_summary.tsv
+```
+
+Disable saving to TSV files:
+
+```bash
+python microqueries.py --no-save
+```
+
 ## Recommended Local Models (Under 10B Parameters)
 
 | Model | Size | Quality | Speed |
@@ -214,6 +226,51 @@ The benchmark tracks:
 - Cache hit/miss status
 - Overall accuracy against expected answers
 
+## Results Output
+
+By default, benchmark results are saved to two TSV files:
+
+### Detailed Results (`results.tsv`)
+
+Contains one row per context evaluated with all timing and accuracy metrics:
+
+| Column | Description |
+|--------|-------------|
+| `run_id` | Unique identifier for this benchmark run (timestamp) |
+| `timestamp` | ISO format timestamp when the run completed |
+| `model_name` | Model name used for evaluation |
+| `gpu_memory_utilization` | GPU memory utilization fraction |
+| `use_cache` | Whether prefix caching was enabled |
+| `context_id` | ID of the evaluated context |
+| `accuracy` | Accuracy for this context (0.0-1.0) |
+| `correct` | Number of correct answers |
+| `total` | Total number of questions for this context |
+| `context_processing_time` | Time to process context (seconds) |
+| `total_time` | Total time for all queries (seconds) |
+| `avg_query_time` | Average query time (seconds) |
+| `min_query_time` | Minimum query time (seconds) |
+| `max_query_time` | Maximum query time (seconds) |
+| `context_cache_hit` | Whether context KV cache was hit |
+
+### Summary Results (`summary.tsv`)
+
+Contains one row per benchmark run with overall statistics:
+
+| Column | Description |
+|--------|-------------|
+| `run_id` | Unique identifier for this benchmark run |
+| `timestamp` | ISO format timestamp when the run completed |
+| `model_name` | Model name used |
+| `gpu_memory_utilization` | GPU memory utilization fraction |
+| `use_cache` | Whether prefix caching was enabled |
+| `total_contexts` | Number of contexts evaluated |
+| `total_questions` | Total number of questions across all contexts |
+| `total_correct` | Total number of correct answers |
+| `overall_accuracy` | Overall accuracy (0.0-1.0) |
+| `total_time` | Total benchmark time (seconds) |
+
+Both files use append mode, allowing you to track benchmark results across multiple runs. Use `run_id` to group results by run or filter by model, cache settings, etc.
+
 **Future enhancement**: Question trees with adaptive querying could dramatically reduce total queries by 30-70% for complex narratives while maintaining accuracy.
 
 ## Files
@@ -222,6 +279,8 @@ The benchmark tracks:
 - `dataset.tsv` - Context texts (52 entries)
 - `questions.tsv` - Micro-queries with expected answers (993 entries)
 - `validate.py` - Validate dataset format
+- `results.tsv` - Detailed per-context benchmark results (gitignored, auto-generated)
+- `summary.tsv` - Summary-level benchmark results (gitignored, auto-generated)
 - `prompt.md` - Original task description
 - `AGENTS.md` - AI agent usage and development workflow
 - `HARDWARE.md` - Hardware specifications used for benchmarking (gitignored)

@@ -6,6 +6,7 @@ import argparse
 from pathlib import Path
 from typing import List, Dict, Tuple, Optional
 import logging
+from datetime import datetime
 
 from vllm import LLM, SamplingParams
 from vllm.inputs import TextPrompt
@@ -270,6 +271,159 @@ def calculate_accuracy(predictions: List[str], expected: List[str]) -> float:
     return correct / len(expected) if expected else 0.0
 
 
+def save_results_to_tsv(
+    results: List[Dict],
+    output_path: str,
+    run_id: str,
+    model_name: str,
+    gpu_memory_utilization: float,
+    use_cache: bool,
+    overall_accuracy: float,
+    total_correct: int,
+    total_questions: int,
+):
+    """
+    Save benchmark results to TSV file.
+
+    The file contains one row per context evaluated, with all timing and accuracy metrics.
+
+    Args:
+        results: List of per-context result dictionaries
+        output_path: Path to output TSV file
+        run_id: Unique identifier for this run (timestamp)
+        model_name: Model name used
+        gpu_memory_utilization: GPU memory utilization setting
+        use_cache: Whether prefix caching was enabled
+        overall_accuracy: Overall accuracy across all contexts
+        total_correct: Total correct answers
+        total_questions: Total number of questions
+    """
+    file_exists = Path(output_path).exists()
+
+    with open(output_path, "a", newline="", encoding="utf-8") as f:
+        fieldnames = [
+            "run_id",
+            "timestamp",
+            "model_name",
+            "gpu_memory_utilization",
+            "use_cache",
+            "context_id",
+            "accuracy",
+            "correct",
+            "total",
+            "context_processing_time",
+            "total_time",
+            "avg_query_time",
+            "min_query_time",
+            "max_query_time",
+            "context_cache_hit",
+        ]
+
+        writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t")
+
+        if not file_exists:
+            writer.writeheader()
+
+        timestamp = datetime.now().isoformat()
+
+        for result in results:
+            metrics = result["metrics"]
+            query_times = metrics.get("query_times", [])
+            avg_query_time = sum(query_times) / len(query_times) if query_times else 0.0
+            min_query_time = min(query_times) if query_times else 0.0
+            max_query_time = max(query_times) if query_times else 0.0
+
+            row = {
+                "run_id": run_id,
+                "timestamp": timestamp,
+                "model_name": model_name,
+                "gpu_memory_utilization": gpu_memory_utilization,
+                "use_cache": use_cache,
+                "context_id": result["context_id"],
+                "accuracy": result["accuracy"],
+                "correct": result["correct"],
+                "total": result["total"],
+                "context_processing_time": metrics["context_processing_time"],
+                "total_time": metrics["total_time"],
+                "avg_query_time": avg_query_time,
+                "min_query_time": min_query_time,
+                "max_query_time": max_query_time,
+                "context_cache_hit": metrics["context_cache_hit"],
+            }
+            writer.writerow(row)
+
+    logger.info(f"Results saved to {output_path}")
+
+
+def save_summary_to_tsv(
+    summary_path: str,
+    run_id: str,
+    model_name: str,
+    gpu_memory_utilization: float,
+    use_cache: bool,
+    overall_accuracy: float,
+    total_correct: int,
+    total_questions: int,
+    total_contexts: int,
+    total_time: float,
+):
+    """
+    Save summary-level benchmark results to TSV file.
+
+    The file contains one row per run with overall statistics.
+
+    Args:
+        summary_path: Path to summary TSV file
+        run_id: Unique identifier for this run (timestamp)
+        model_name: Model name used
+        gpu_memory_utilization: GPU memory utilization setting
+        use_cache: Whether prefix caching was enabled
+        overall_accuracy: Overall accuracy across all contexts
+        total_correct: Total correct answers
+        total_questions: Total number of questions
+        total_contexts: Number of contexts evaluated
+        total_time: Total time for all evaluations
+    """
+    file_exists = Path(summary_path).exists()
+
+    with open(summary_path, "a", newline="", encoding="utf-8") as f:
+        fieldnames = [
+            "run_id",
+            "timestamp",
+            "model_name",
+            "gpu_memory_utilization",
+            "use_cache",
+            "total_contexts",
+            "total_questions",
+            "total_correct",
+            "overall_accuracy",
+            "total_time",
+        ]
+
+        writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t")
+
+        if not file_exists:
+            writer.writeheader()
+
+        timestamp = datetime.now().isoformat()
+
+        row = {
+            "run_id": run_id,
+            "timestamp": timestamp,
+            "model_name": model_name,
+            "gpu_memory_utilization": gpu_memory_utilization,
+            "use_cache": use_cache,
+            "total_contexts": total_contexts,
+            "total_questions": total_questions,
+            "total_correct": total_correct,
+            "overall_accuracy": overall_accuracy,
+            "total_time": total_time,
+        }
+        writer.writerow(row)
+
+    logger.info(f"Summary saved to {summary_path}")
+
+
 def main():
     """Main function to run the micro-query evaluation benchmark."""
     parser = argparse.ArgumentParser(
@@ -304,6 +458,21 @@ def main():
         default=0.8,
         help="GPU memory utilization fraction (default: 0.8)",
     )
+    parser.add_argument(
+        "--output",
+        type=str,
+        default="./results.tsv",
+        help="Path to output results TSV file (default: ./results.tsv)",
+    )
+    parser.add_argument(
+        "--summary",
+        type=str,
+        default="./summary.tsv",
+        help="Path to output summary TSV file (default: ./summary.tsv)",
+    )
+    parser.add_argument(
+        "--no-save", action="store_true", help="Skip saving results to TSV files"
+    )
 
     args = parser.parse_args()
 
@@ -335,9 +504,14 @@ def main():
     print("MICRO-QUERY EVALUATION BENCHMARK WITH PROMPT CACHING")
     print("=" * 80 + "\n")
 
+    # Generate unique run ID
+    run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+    logger.info(f"Run ID: {run_id}")
+
     total_correct = 0
     total_questions = 0
     all_results = []
+    start_benchmark = time.time()
 
     for ctx_id in sorted(grouped_questions.keys()):
         if ctx_id not in contexts:
@@ -404,6 +578,7 @@ def main():
 
     # Print overall summary
     overall_accuracy = total_correct / total_questions if total_questions > 0 else 0.0
+    total_benchmark_time = time.time() - start_benchmark
 
     print("\n" + "=" * 80)
     print("OVERALL SUMMARY")
@@ -412,6 +587,7 @@ def main():
     print(f"Total questions: {total_questions}")
     print(f"Total correct: {total_correct}")
     print(f"Overall accuracy: {overall_accuracy:.2%}")
+    print(f"Total benchmark time: {total_benchmark_time:.3f}s")
 
     print("\nPer-context results:")
     for result in all_results:
@@ -420,6 +596,36 @@ def main():
         )
 
     print("\n" + "=" * 80)
+
+    # Save results to TSV files
+    if not args.no_save:
+        use_cache = not args.no_cache
+        save_results_to_tsv(
+            results=all_results,
+            output_path=args.output,
+            run_id=run_id,
+            model_name=args.model,
+            gpu_memory_utilization=args.gpu_memory_utilization,
+            use_cache=use_cache,
+            overall_accuracy=overall_accuracy,
+            total_correct=total_correct,
+            total_questions=total_questions,
+        )
+        save_summary_to_tsv(
+            summary_path=args.summary,
+            run_id=run_id,
+            model_name=args.model,
+            gpu_memory_utilization=args.gpu_memory_utilization,
+            use_cache=use_cache,
+            overall_accuracy=overall_accuracy,
+            total_correct=total_correct,
+            total_questions=total_questions,
+            total_contexts=len(all_results),
+            total_time=total_benchmark_time,
+        )
+        print(f"\nResults saved:")
+        print(f"  Detailed: {args.output}")
+        print(f"  Summary: {args.summary}")
 
     return all_results
 

@@ -1,3 +1,5 @@
 __pycache__/
 HARDWARE.md
 benchmark_output.txt
+results.tsv
+summary.tsv

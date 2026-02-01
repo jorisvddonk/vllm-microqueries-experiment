@@ -31,9 +31,11 @@ When making changes to this project using AI agents:
 
 3. **Update README.md** with new benchmark results, dataset changes, and performance notes
 
-4. **Test changes** locally before committing to ensure compatibility
+4. **Review TSV output files** (`results.tsv` and `summary.tsv`) for performance metrics and trends
 
-5. **Validate dataset** format after any modifications:
+5. **Test changes** locally before committing to ensure compatibility
+
+6. **Validate dataset** format after any modifications:
    ```bash
    python validate.py
    ```
