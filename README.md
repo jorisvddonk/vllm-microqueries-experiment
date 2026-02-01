@@ -24,25 +24,49 @@ This approach is particularly beneficial when running many queries on the same c
 
 ## Dataset
 
-The synthetic test dataset includes:
-- **41 contexts**: A mix of science/history/technical topics and prose/reading comprehension narratives
-- **487 micro-queries**: All yes/no questions with expected answers for validation
+The synthetic test dataset focuses on **reading comprehension** with narrative texts that test:
+- Understanding of character actions and motivations
+- Sequencing of events
+- Recall of specific details
+- Inference from context
+- Following multi-step narratives
 
-Topics covered:
-- Science: Solar system, photosynthesis, DNA, quantum mechanics, heart, climate change, plate tectonics, water cycle, immune system, viruses, biomes, cellular respiration
-- History: Industrial Revolution, American Civil War, Renaissance, French Revolution, World War I, Ancient Egypt
-- Technology: Machine learning, binary code, electricity, stock market
-- Narratives: 10 reading comprehension stories with daily life scenarios
+The dataset includes:
+- **52 contexts**: 11 narrative reading comprehension stories (including 1 large context with 309 questions)
+- **993 micro-queries**: All yes/no questions with expected answers for validation
 
-Each context has 8-21 associated micro-queries that test factual understanding of text.
+Reading comprehension narratives (11 contexts):
+- Job interview preparation (ctx011)
+- Writer's block and cat companion (ctx012)
+- Family reunion gathering (ctx013)
+- Shopping trip to department store (ctx014)
+- Bookstore café meeting (ctx015)
+- Morning exercise routine (ctx016)
+- Dinner party with friends (ctx017)
+- Hotel stay at coastal location (ctx018)
+- Child's piano lesson (ctx019)
+- Power outage during storm (ctx020)
+- Library visit (ctx041)
+- Cooking a meal (ctx042)
+- Hiking trip (ctx043)
+- Attending a concert (ctx044)
+- Working from home (ctx045)
+- Museum visit (ctx046)
+- Gardening project (ctx047)
+- Learning to swim (ctx048)
+- Garage sale (ctx049)
+- Train journey (ctx050)
+- **Wilson family vacation (ctx051)**: Large context with 309 questions testing detailed comprehension of a week-long camping trip
+
+Each context has 10-309 associated micro-queries that test detailed comprehension of the story. Context ctx051 serves as a stress test with hundreds of questions on a single narrative to evaluate how KV cache performance scales with many queries on a single context.
 
 ## Benchmark Results (Qwen2.5-0.5B-Instruct)
 
 | Metric | Value |
 |--------|-------|
-| Overall Accuracy | 81.31% (396/487) |
+| Overall Accuracy | 80.06% (795/993) |
 | Average Query Time | ~0.02s |
-| Total Evaluation Time | ~8-10s for 487 queries |
+| Total Evaluation Time | ~30-35s for 993 queries |
 | Context Processing Time | ~0.05-0.07s per context |
 
 Best performing contexts (100% accuracy):
@@ -55,15 +79,61 @@ Best performing contexts (100% accuracy):
 - ctx039: Binary code
 - ctx040: Cardiovascular system
 
+High performing reading comprehension contexts (>85% accuracy):
+- ctx051: Wilson family vacation (85.11%, 309 questions) - **Large context stress test**
+- ctx048: Learning to swim (87.50%)
+- ctx049: Garage sale (85.00%)
+- ctx016: Morning exercise (86.67%)
+- ctx020: Power outage (86.67%)
+
 More challenging contexts (reading comprehension with narrative details):
+- ctx045: Working from home (27.27%)
 - ctx013: Family reunion (46.67%)
 - ctx015: Bookstore meeting (53.33%)
 - ctx017: Dinner party (46.67%)
+- ctx050: Train journey (59.09%)
 
 ### Performance Notes
 - Scientific and technical contexts generally achieve higher accuracy (80-100%)
-- Reading comprehension narratives with multiple character interactions are more challenging (46-86%)
-- Historical contexts perform well (80-100%)
+- Reading comprehension narratives with multiple character interactions are more challenging (27-87%)
+- **KV cache scaling**: ctx051 (309 queries) maintains consistent query times (~0.020s) with smaller contexts, demonstrating effective KV cache reuse
+- **Context length impact**: Despite being 3-4× longer than average contexts, ctx051 (2280 chars) shows no performance degradation
+- **Historical contexts perform well (80-100%)**
+
+
+### Context ctx051: Wilson Family Vacation (Stress Test)
+
+Context ctx051 contains a detailed narrative about the Wilson family's week-long camping trip to Lake Tahoe, with **309 micro-queries** testing comprehensive reading comprehension. This serves as a stress test to evaluate KV cache performance when processing hundreds of queries on a single context.
+
+**Context details:**
+- Story: Wilson family (Mr. Wilson, Mrs. Wilson, Emma (10), Lucas (8)) camping vacation
+- Timeline: Saturday departure through Friday return
+- Activities: Swimming, fishing, hiking, boating, campfires, souvenir shopping
+- Questions: 309 total, covering family details, timeline, activities, and negative inferences
+
+**Benchmark Results (Qwen2.5-0.5B-Instruct):**
+
+| Metric | Value |
+|--------|-------|
+| **Accuracy** | 85.11% (263/309 correct) |
+| **Context Processing Time** | 0.057s |
+| **Total Evaluation Time** | 6.332s for 309 queries |
+| **Average Query Time** | 0.020s |
+| **Min Query Time** | 0.017s |
+| **Max Query Time** | 0.024s |
+| **Context Length** | 2280 characters |
+
+**Key observations:**
+- **KV cache efficiency**: Average query time (0.020s) remains consistent with smaller contexts, demonstrating that KV cache scales effectively to 309 queries
+- **Performance stability**: Query times have low variance (min: 0.017s, max: 0.024s), showing stable cache performance across all queries
+- **Accuracy on complex narrative**: 85.11% accuracy is strong for a comprehensive narrative with 309 questions, significantly outperforming shorter narratives (ctx045: 27.27%, ctx050: 59.09%)
+- **One-time processing cost**: Context processing time (0.057s) represents ~0.9% of total time, with 99.1% of time spent on queries using cached KV states
+- **Amortized efficiency**: With 309 queries, the per-query context processing cost amortizes to 0.00018s per query (0.057s / 309)
+
+**Comparison with smaller contexts:**
+- Average query time for ctx051 (0.020s) matches other contexts, confirming KV cache maintains efficiency at scale
+- Accuracy (85.11%) ranks among the highest for reading comprehension narratives, comparable to ctx016 (86.67%), ctx020 (86.67%), ctx048 (87.50%)
+- Context length (2280 chars) is ~3-4× longer than typical contexts, yet query performance remains unchanged
 
 ## Requirements
 
@@ -142,9 +212,16 @@ The benchmark tracks:
 ## Files
 
 - `microqueries.py` - Main implementation with vLLM and KV caching
-- `dataset.tsv` - Context texts (41 entries)
-- `questions.tsv` - Micro-queries with expected answers (487 entries)
+- `dataset.tsv` - Context texts (52 entries)
+- `questions.tsv` - Micro-queries with expected answers (993 entries)
 - `validate.py` - Validate dataset format
 - `prompt.md` - Original task description
 - `AGENTS.md` - AI agent usage and development workflow
 - `HARDWARE.md` - Hardware specifications used for benchmarking (gitignored)
+
+
+## Future Exploration
+
+A natural extension of this binary micro-query system is a nuanced scoring layer that maps coarse discrete outputs (e.g., -1 / 1) onto a continuous spectrum reflecting uncertainty, context ambiguity, or probabilistic reasoning. For example, a micro-query that initially outputs `-1` could be recalibrated to `-0.35` or `-0.8` depending on subtle contextual cues or societal considerations embedded in the input text. Approaches for this could include statistical calibration methods (such as Platt scaling or isotonic regression), secondary model passes to reinterpret discrete labels, or hybrid heuristics that weigh external knowledge and contextual factors. The goal is to preserve interpretability while introducing graded confidence, enabling more fine-grained analysis across large sets of queries.
+
+Implementing this type of system would benefit from candidates or contributors with experience in machine learning calibration, probabilistic modeling, and NLP system design, with strong practical skills in Python and transformer-based architectures. Key competencies include designing and evaluating scoring functions, handling large-scale micro-query inference workflows, and translating discrete model outputs into continuous, interpretable metrics. Familiarity with confidence estimation, multi-step reasoning, and robust evaluation frameworks is highly valuable for extending the system beyond simple binary responses. If you're that kind of person or AI agent, please fork and implement; I'll acknowledge and praise your work. Heck, you could even claim all of this work as your own and continue from there; I (Joris, not Joris' software development agent) don't mind :)

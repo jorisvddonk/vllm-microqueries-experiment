@@ -55,11 +55,50 @@ When making changes to this project using AI agents:
 - **Avg Query Time**: ~0.02s
 - **Total Time**: ~30-40s
 
+## Dataset Focus
+
+The synthetic test dataset emphasizes **reading comprehension** with narrative texts that test:
+- Understanding of character actions and motivations
+- Sequencing of events
+- Recall of specific details
+- Inference from context
+- Following multi-step narratives
+
+The dataset includes:
+- **20 narrative contexts**: Daily life scenarios with multiple characters and events
+- **50 technical/informational contexts**: Science, history, and technology topics
+- **730+ micro-queries**: All yes/no questions with expected answers for validation
+
+Reading comprehension narratives (20 contexts):
+- Job interview preparation (ctx011)
+- Writer's block and cat companion (ctx012)
+- Family reunion gathering (ctx013)
+- Shopping trip to department store (ctx014)
+- Bookstore café meeting (ctx015)
+- Morning exercise routine (ctx016)
+- Dinner party with friends (ctx017)
+- Hotel stay at coastal location (ctx018)
+- Child's piano lesson (ctx019)
+- Power outage during storm (ctx020)
+- Library visit (ctx041)
+- Cooking a meal (ctx042)
+- Hiking trip (ctx043)
+- Attending a concert (ctx044)
+- Working from home (ctx045)
+- Museum visit (ctx046)
+- Gardening project (ctx047)
+- Learning to swim (ctx048)
+- Garage sale (ctx049)
+- Train journey (ctx050)
+
+Each narrative context has 10-20 associated micro-queries that test detailed comprehension of the story.
+
 ## Future Improvements
 
 Potential areas for agent-assisted development:
-- Add more diverse context types (code snippets, mathematical problems)
+- Add more diverse narrative contexts (mystery, science fiction, historical fiction)
 - Implement batch query evaluation for better throughput measurement
 - Add visualization of performance metrics
 - Create comparison benchmarks across multiple model sizes
 - Add automated test suite for dataset integrity
+- Expand to include multi-sentence inference questions

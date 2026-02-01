@@ -251,7 +251,7 @@ q249	ctx018	Does Nora eat by candlelight?	NO
 q250	ctx018	Does Nora travel alone?	YES
 q251	ctx019	Does Leo take piano lessons?	YES
 q252	ctx019	Is Leo seven years old?	YES
-q253	ctx019	Does Leo play "Twinkle, Twinkle, Little Star"?	YES
+q253	ctx019	"Does Leo play ""Twinkle, Twinkle, Little Star""?"	YES
 q254	ctx019	Does Mrs. Henderson give Leo candy?	YES
 q255	ctx019	Does Maria pay for the lesson?	YES
 q256	ctx019	Is Mrs. Henderson male?	NO
@@ -279,7 +279,6 @@ q277	ctx020	Do they eat a full meal?	NO
 q278	ctx020	Does the power stay out all night?	NO
 q279	ctx020	Is Lucas scared?	NO
 q280	ctx020	Does Michael use the fireplace?	YES
-id	context_id	question_text	expected_answer
 q281	ctx021	Is plate tectonics a scientific theory?	YES
 q282	ctx021	Are Earth's plates stationary?	NO
 q283	ctx021	Do plates float on the asthenosphere?	YES
@@ -387,7 +386,6 @@ q385	ctx030	Do neural networks learn from training data?	YES
 q386	ctx030	Can neural networks be used for image recognition?	YES
 q387	ctx030	Have neural networks surpassed human performance in some tasks?	YES
 q388	ctx030	Is natural language processing an application of neural networks?	YES
-id	context_id	question_text	expected_answer
 q389	ctx031	Is the metric system based on powers of ten?	YES
 q390	ctx031	Is the meter the base unit for length?	YES
 q391	ctx031	Is a kilometer 100 meters?	NO
@@ -488,3 +486,509 @@ q505	ctx040	Do red blood cells carry oxygen?	YES
 q506	ctx040	Do white blood cells fight infection?	YES
 q507	ctx040	Do platelets help with clotting?	YES
 q508	ctx040	Does the heart create blood pressure?	YES
+q501	ctx041	Does Emma go to the library on a weekend?	NO
+q502	ctx041	Does Emma go to the library on a weekday?	YES
+q501	ctx041	Does Emma go to the library on a weekend?	NO
+q502	ctx041	Does Emma go to the library on a weekday?	YES
+q503	ctx041	Does Emma find a fiction book?	YES
+q504	ctx041	Does Emma find a non-fiction book?	NO
+q505	ctx041	Does Emma sit by a window?	YES
+q506	ctx041	Does an elderly man read a newspaper?	YES
+q507	ctx041	Does Emma exchange smiles with the elderly man?	YES
+q508	ctx041	Does Emma read for an hour?	YES
+q509	ctx041	Does Emma receive a text message?	YES
+q510	ctx041	Does Emma check out more than one book?	YES
+q511	ctx041	Does Emma check out exactly one book?	NO
+q512	ctx041	Does Emma check out three additional books?	YES
+q513	ctx041	Does the librarian stamp due dates?	YES
+q514	ctx041	Does Emma leave with a stack of books?	YES
+q515	ctx041	Is Emma female?	YES
+q516	ctx041	Is the elderly man male?	YES
+q517	ctx041	Does Emma read during the day?	YES
+q518	ctx041	Does Emma go to the library in the morning?	NO
+q519	ctx041	Does Emma go to the library in the afternoon?	YES
+q520	ctx041	Does Emma find a mystery novel?	YES
+q521	ctx042	Does Chen cook dinner for his roommates?	YES
+q522	ctx042	Does Chen shop at a grocery store?	YES
+q523	ctx042	Does Chen buy fresh vegetables?	YES
+q524	ctx042	Does Chen buy chicken breast?	YES
+q525	ctx042	Does Chen buy rice?	YES
+q526	ctx042	Does Chen buy wine?	YES
+q527	ctx042	Does Chen have more than one roommate?	YES
+q528	ctx042	Does Sarah help with cooking?	YES
+q529	ctx042	Does Chen sauté the chicken?	YES
+q530	ctx042	Does the group eat together?	YES
+q531	ctx042	Does Chen do the dishes?	YES
+q532	ctx042	Does Chen live alone?	NO
+q533	ctx042	Does Chen work during the day?	YES
+q534	ctx042	Does Chen marinate the chicken?	YES
+q535	ctx042	Does the group sit at the kitchen table?	YES
+q536	ctx042	Does Sarah arrive home first?	NO
+q537	ctx042	Do the other roommates arrive during cooking?	YES
+q538	ctx042	Does Chen cook on a stove?	YES
+q539	ctx043	Does the hiking group meet at 7 AM?	YES
+q540	ctx043	Is there a guide in the group?	YES
+q541	ctx043	Is the guide's name Mark?	YES
+q542	ctx043	Are there six people in the group?	YES
+q543	ctx043	Does the group hike up a mountain?	YES
+q544	ctx043	Is Lisa the youngest hiker?	YES
+q545	ctx043	Does Lisa get tired?	YES
+q546	ctx043	Does Mark adjust the pace?	YES
+q547	ctx043	Does the group reach the summit?	YES
+q548	ctx043	Does the hike take three hours to reach the summit?	YES
+q549	ctx043	Does the descent take two hours?	YES
+q550	ctx043	Does the group eat lunch at the summit?	YES
+q551	ctx043	Do they take photos?	YES
+q552	ctx043	Is there a scenic overlook?	YES
+q553	ctx043	Do they see wildflowers?	YES
+q554	ctx043	Do they see valleys and lakes?	YES
+q555	ctx043	Is the hike on a weekday?	NO
+q556	ctx043	Is the hike on a Saturday?	YES
+q557	ctx043	Does the group start with an easy pace?	YES
+q558	ctx043	Does the trail become steeper?	YES
+q559	ctx043	Does the trail become rockier?	YES
+q560	ctx044	Does Jessica arrive at a concert venue?	YES
+q561	ctx044	Is the concert outdoors?	YES
+q562	ctx044	Does Jessica arrive two hours before the show?	YES
+q563	ctx044	Does Jessica have friends with her?	YES
+q564	ctx044	Do they spread blankets on the grass?	YES
+q565	ctx044	Is there an opening band?	YES
+q566	ctx044	Does the opening band play for 45 minutes?	YES
+q567	ctx044	Is there an intermission?	YES
+q568	ctx044	Does the intermission last 30 minutes?	YES
+q569	ctx044	Is there a headlining band?	YES
+q570	ctx044	Does the headlining band play for 2.5 hours?	YES
+q571	ctx044	Does the lead singer ask for phone flashlights?	YES
+q572	ctx044	Does the band play old favorites?	YES
+q573	ctx044	Does the band play new songs?	YES
+q574	ctx044	Is there an encore?	YES
+q575	ctx044	Do they leave the concert happy?	YES
+q576	ctx044	Does the concert happen at night?	YES
+q577	ctx044	Is Jessica female?	YES
+q578	ctx044	Does the crowd cheer?	YES
+q579	ctx045	Does Maya work from home?	YES
+q580	ctx045	Does Maya start at 8:30 AM?	YES
+q581	ctx045	Does Maya check emails first?	YES
+q582	ctx045	Does Maya have a video conference call?	YES
+q583	ctx045	Is the call at 10 AM?	YES
+q584	ctx045	Does Maya have a dog?	YES
+q585	ctx045	Is the dog's name Buster?	YES
+q586	ctx045	Does the dog bark?	YES
+q587	ctx045	Does a delivery person come?	YES
+q588	ctx045	Does Maya mute her microphone?	YES
+q589	ctx045	Does Maya work on a presentation?	YES
+q590	ctx045	Does Maya take breaks?	YES
+q591	ctx045	Does Maya do laundry?	YES
+q592	ctx045	Does Maya prepare lunch?	YES
+q593	ctx045	Does Maya have a daughter?	YES
+q594	ctx045	Does her daughter come home from school?	YES
+q595	ctx045	Does Maya help with homework?	YES
+q596	ctx045	Does Maya finish work at 6 PM?	YES
+q597	ctx045	Does Maya have a home office?	YES
+q598	ctx045	Is Maya female?	YES
+q599	ctx045	Does Maya work alone?	NO
+q600	ctx045	Does Maya have a team call?	YES
+q601	ctx046	Does the class go on a field trip?	YES
+q602	ctx046	Is it a third-grade class?	YES
+q603	ctx046	Is the teacher's name Mrs. Rodriguez?	YES
+q604	ctx046	Do they go to a science museum?	YES
+q605	ctx046	Do they ride a school bus?	YES
+q606	ctx046	Do they leave at 9 AM?	YES
+q607	ctx046	Is there a guide at the museum?	YES
+q608	ctx046	Do they see dinosaur skeletons?	YES
+q609	ctx046	Do they see a T-Rex?	YES
+q610	ctx046	Do they explore a space exhibit?	YES
+q611	ctx046	Do they touch moon rocks?	YES
+q612	ctx046	Do they eat lunch at the museum?	YES
+q613	ctx046	Is there a discovery room?	YES
+q614	ctx046	Is the discovery room hands-on?	YES
+q615	ctx046	Do they return at 2 PM?	YES
+q616	ctx046	Do the students sing songs on the bus?	YES
+q617	ctx046	Is the field trip on a Thursday?	YES
+q618	ctx046	Do the students ask many questions?	YES
+q619	ctx046	Are the children excited?	YES
+q620	ctx047	Does Sarah start a vegetable garden?	YES
+q621	ctx047	Does Sarah start in the spring?	YES
+q622	ctx047	Does Sarah clear an area behind the garage?	YES
+q623	ctx047	Does Sarah buy compost?	YES
+q624	ctx047	Does Sarah buy garden soil?	YES
+q625	ctx047	Does Sarah mix soil into the dirt?	YES
+q626	ctx047	Does Sarah plant tomato seedlings?	YES
+q627	ctx047	Does Sarah plant cucumber seedlings?	YES
+q628	ctx047	Does Sarah plant pepper seedlings?	YES
+q629	ctx047	Does Sarah place markers next to plants?	YES
+q630	ctx047	Does Sarah water the garden every morning?	YES
+q631	ctx047	Does a neighbor give advice?	YES
+q632	ctx047	Is the neighbor's name Mr. Thompson?	YES
+q633	ctx047	Does Sarah harvest vegetables by mid-summer?	YES
+q634	ctx047	Does Sarah share produce with neighbors?	YES
+q635	ctx047	Is Sarah female?	YES
+q636	ctx047	Does Mr. Thompson give advice about pruning?	YES
+q637	ctx047	Does Sarah check for pests?	YES
+q638	ctx048	Does Ethan learn to swim?	YES
+q639	ctx048	Does Ethan take adult swimming lessons?	YES
+q640	ctx048	Is the instructor's name Coach Maria?	YES
+q641	ctx048	Do lessons start in shallow water?	YES
+q642	ctx048	Does Ethan learn to float?	YES
+q643	ctx048	Is Ethan nervous at first?	YES
+q644	ctx048	Is Coach Maria patient?	YES
+q645	ctx048	Does Ethan learn kicking and arm strokes?	YES
+q646	ctx048	Are there other students in the class?	YES
+q647	ctx048	Do lessons last six weeks?	YES
+q648	ctx048	Does Ethan swim a full lap by the end?	YES
+q649	ctx048	Does Ethan show off his skills to friends?	YES
+q650	ctx048	Does Ethan go to a pool with friends?	YES
+q651	ctx048	Is Ethan male?	YES
+q652	ctx048	Are there beginner and intermediate students?	YES
+q653	ctx048	Does Ethan improve over time?	YES
+q654	ctx049	Does Rachel have a garage sale?	YES
+q655	ctx049	Does Rachel live in a neighborhood?	YES
+q656	ctx049	Is the garage sale on Saturday?	YES
+q657	ctx049	Does Rachel sort through her attic?	YES
+q658	ctx049	Does Rachel sort through her garage?	YES
+q659	ctx049	Does Rachel find old clothes?	YES
+q660	ctx049	Does Rachel find books?	YES
+q661	ctx049	Does Rachel find kitchen appliances?	YES
+q662	ctx049	Does Rachel find children's toys?	YES
+q663	ctx049	Does Rachel have kids?	YES
+q664	ctx049	Does Rachel price items on Friday?	YES
+q665	ctx049	Do people arrive early?	YES
+q666	ctx049	Does a young couple buy a vintage dresser?	YES
+q667	ctx049	Does a collector buy comic books?	YES
+q668	ctx049	Does a neighbor bring lemonade?	YES
+q669	ctx049	Is Rachel female?	YES
+q670	ctx049	Does Rachel make over $400?	YES
+q671	ctx049	Does Rachel donate remaining items?	YES
+q672	ctx049	Does the sale go until 4 PM?	YES
+q673	ctx049	Do people arrive at 7 AM?	YES
+q674	ctx050	Does James take a train journey?	YES
+q675	ctx050	Does James go from Chicago to New York?	YES
+q676	ctx050	Does the journey take about 19 hours?	YES
+q677	ctx050	Does James board at Grand Central Station?	YES
+q678	ctx050	Does James have a suitcase?	YES
+q679	ctx050	Does James have a backpack?	YES
+q680	ctx050	Does James bring snacks?	YES
+q681	ctx050	Does James sit in the observation car?	YES
+q682	ctx050	Does the observation car have large windows?	YES
+q683	ctx050	Does the train depart on time?	YES
+q684	ctx050	Does James read a book?	YES
+q685	ctx050	Does James visit the dining car?	YES
+q686	ctx050	Does James eat lunch?	YES
+q687	ctx050	Does James talk to an elderly woman?	YES
+q688	ctx050	Is the woman traveling to visit grandchildren?	YES
+q689	ctx050	Does James convert his seat into a bed?	YES
+q690	ctx050	Does James watch the sunrise?	YES
+q691	ctx050	Does the train arrive in New York late morning?	YES
+q692	ctx050	Is James male?	YES
+q693	ctx050	Does James have business meetings?	YES
+q694	ctx050	Does James feel rested upon arrival?	YES
+q695	ctx050	Does James travel alone?	YES
+q696	ctx051	Is the family's last name Wilson?	YES
+q697	ctx051	Is there a father in the family?	YES
+q698	ctx051	Is there a mother in the family?	YES
+q699	ctx051	Is Mr. Wilson the father?	YES
+q700	ctx051	Is Mrs. Wilson the mother?	YES
+q701	ctx051	Is Emma a child in the family?	YES
+q702	ctx051	Is Lucas a child in the family?	YES
+q703	ctx051	Is Emma older than Lucas?	YES
+q704	ctx051	Is Emma 10 years old?	YES
+q705	ctx051	Is Lucas 8 years old?	YES
+q706	ctx051	Is Mr. Wilson male?	YES
+q707	ctx051	Is Mrs. Wilson female?	YES
+q708	ctx051	Is Emma female?	YES
+q709	ctx051	Is Lucas male?	YES
+q710	ctx051	Are there four family members?	YES
+q711	ctx051	Are there two children in the family?	YES
+q712	ctx051	Does the family live in San Francisco?	YES
+q713	ctx051	Is their destination Lake Tahoe?	YES
+q714	ctx051	Is this a summer vacation?	YES
+q715	ctx051	Is the vacation one week long?	YES
+q716	ctx051	Do they leave at 6 AM?	YES
+q717	ctx051	Do they leave on Saturday?	YES
+q718	ctx051	Does Mr. Wilson drive?	YES
+q719	ctx051	Does Mrs. Wilson navigate?	YES
+q720	ctx051	Does the drive take about four hours?	YES
+q721	ctx051	Do they stop for breakfast?	YES
+q722	ctx051	Do they stop at a roadside diner?	YES
+q723	ctx051	Do they arrive at the campsite?	YES
+q724	ctx051	Do they have a reserved spot?	YES
+q725	ctx051	Is the campsite near the lake?	YES
+q726	ctx051	Do they set up their tent?	YES
+q727	ctx051	Do they set up camp chairs?	YES
+q728	ctx051	Is the weather perfect?	YES
+q729	ctx051	Are there clear blue skies?	YES
+q730	ctx051	Is there a gentle breeze?	YES
+q731	ctx051	Does the breeze come off the water?	YES
+q732	ctx051	Do they spend the afternoon swimming?	YES
+q733	ctx051	Do they swim in the lake?	YES
+q734	ctx051	Do they relax on the beach?	YES
+q735	ctx051	Do Mr. Wilson and Lucas go fishing?	YES
+q736	ctx051	Do they fish off a pier?	YES
+q737	ctx051	Do they catch fish?	YES
+q738	ctx051	Do they catch small trout?	YES
+q739	ctx051	Do they release the fish?	YES
+q740	ctx051	Do they release them back into the water?	YES
+q741	ctx051	Do they go hiking on Sunday?	YES
+q742	ctx051	Do they follow a trail?	YES
+q743	ctx051	Do they go through pine forests?	YES
+q744	ctx051	Do they find a waterfall?	YES
+q745	ctx051	Do they eat a picnic lunch?	YES
+q746	ctx051	Does Emma find interesting rocks?	YES
+q747	ctx051	Does Emma collect rocks?	YES
+q748	ctx051	Does Emma collect things in a bag?	YES
+q749	ctx051	Does Emma find wildflowers?	YES
+q750	ctx051	Does Emma collect wildflowers?	YES
+q751	ctx051	Is Monday cloudy?	YES
+q752	ctx051	Do they visit a nearby town?	YES
+q753	ctx051	Do they go souvenir shopping?	YES
+q754	ctx051	Do they get ice cream?	YES
+q755	ctx051	Does Mrs. Wilson buy a hand-carved wooden bear?	YES
+q756	ctx051	Do the children choose colorful postcards?	YES
+q757	ctx051	Do they send postcards to friends?	YES
+q758	ctx051	Do they rent a small boat on Tuesday?	YES
+q759	ctx051	Do they explore different parts of the lake?	YES
+q760	ctx051	Do they reach parts they couldn't reach from shore?	YES
+q761	ctx051	Do they see ducks?	YES
+q762	ctx051	Do they see geese?	YES
+q763	ctx051	Do they see a bald eagle?	YES
+q764	ctx051	Does the bald eagle soar above the water?	YES
+q765	ctx051	Do they have evening campfires?	YES
+q766	ctx051	Do they roast marshmallows?	YES
+q767	ctx051	Do they tell stories?	YES
+q768	ctx051	Do they pack up on Friday morning?	YES
+q769	ctx051	Do they clean the campsite?	YES
+q770	ctx051	Do they clean thoroughly?	YES
+q771	ctx051	Do they leave no trash behind?	YES
+q772	ctx051	Do they drive back home?	YES
+q773	ctx051	Is the drive back quieter?	YES
+q774	ctx051	Do they arrive home in the late afternoon?	YES
+q775	ctx051	Are they tired from the vacation?	YES
+q776	ctx051	Are they happy from the vacation?	YES
+q777	ctx051	Do they immediately begin unpacking?	YES
+q778	ctx051	Do they do laundry?	YES
+q779	ctx051	Does Mrs. Wilson take photos?	YES
+q780	ctx051	Does the family look through photos in the evening?	YES
+q781	ctx051	Does the family plan their next camping trip?	YES
+q782	ctx051	Do they plan together?	YES
+q783	ctx051	Is the family already planning another trip?	YES
+q784	ctx051	Do they stay in a hotel?	NO
+q785	ctx051	Is the vacation in winter?	NO
+q786	ctx051	Is the vacation in spring?	NO
+q787	ctx051	Is the vacation in fall?	NO
+q788	ctx051	Do they fly to Lake Tahoe?	NO
+q789	ctx051	Do they take a train?	NO
+q790	ctx051	Do they take a bus?	NO
+q791	ctx051	Do they stay in a cabin?	NO
+q792	ctx051	Do they rent an RV?	NO
+q793	ctx051	Is the weather bad?	NO
+q794	ctx051	Is it raining?	NO
+q795	ctx051	Is it storming?	NO
+q796	ctx051	Do they get lost?	NO
+q797	ctx051	Do they have car trouble?	NO
+q798	ctx051	Does anyone get hurt?	NO
+q799	ctx051	Does anyone get sick?	NO
+q800	ctx051	Does the vacation last more than a week?	NO
+q801	ctx051	Does the vacation last less than a week?	NO
+q802	ctx051	Do they go alone?	NO
+q803	ctx051	Do they bring other families?	NO
+q804	ctx051	Do they bring grandparents?	NO
+q805	ctx051	Does the Wilson family enjoy their vacation?	YES
+q806	ctx051	Does the vacation involve outdoor activities?	YES
+q807	ctx051	Do the children participate in activities?	YES
+q808	ctx051	Does the family spend time together?	YES
+q809	ctx051	Does the Wilson family enjoy their vacation?	YES
+q810	ctx051	Does the vacation involve outdoor activities?	YES
+q811	ctx051	Do the children participate in activities?	YES
+q812	ctx051	Does the family spend time together?	YES
+q813	ctx051	Does the Wilson family enjoy their vacation?	YES
+q814	ctx051	Does the vacation involve outdoor activities?	YES
+q815	ctx051	Do the children participate in activities?	YES
+q816	ctx051	Does the family spend time together?	YES
+q817	ctx051	Does the Wilson family enjoy their vacation?	YES
+q818	ctx051	Does the vacation involve outdoor activities?	YES
+q819	ctx051	Do the children participate in activities?	YES
+q820	ctx051	Does the family spend time together?	YES
+q821	ctx051	Does the Wilson family enjoy their vacation?	YES
+q822	ctx051	Does the vacation involve outdoor activities?	YES
+q823	ctx051	Do the children participate in activities?	YES
+q824	ctx051	Does the family spend time together?	YES
+q825	ctx051	Does the Wilson family enjoy their vacation?	YES
+q826	ctx051	Does the vacation involve outdoor activities?	YES
+q827	ctx051	Do the children participate in activities?	YES
+q828	ctx051	Does the family spend time together?	YES
+q829	ctx051	Does the Wilson family enjoy their vacation?	YES
+q830	ctx051	Does the vacation involve outdoor activities?	YES
+q831	ctx051	Do the children participate in activities?	YES
+q832	ctx051	Does the family spend time together?	YES
+q833	ctx051	Does the Wilson family enjoy their vacation?	YES
+q834	ctx051	Does the vacation involve outdoor activities?	YES
+q835	ctx051	Do the children participate in activities?	YES
+q836	ctx051	Does the family spend time together?	YES
+q837	ctx051	Does the Wilson family enjoy their vacation?	YES
+q838	ctx051	Does the vacation involve outdoor activities?	YES
+q839	ctx051	Do the children participate in activities?	YES
+q840	ctx051	Does the family spend time together?	YES
+q841	ctx051	Does the Wilson family enjoy their vacation?	YES
+q842	ctx051	Does the vacation involve outdoor activities?	YES
+q843	ctx051	Do the children participate in activities?	YES
+q844	ctx051	Does the family spend time together?	YES
+q845	ctx051	Does the Wilson family enjoy their vacation?	YES
+q846	ctx051	Does the vacation involve outdoor activities?	YES
+q847	ctx051	Do the children participate in activities?	YES
+q848	ctx051	Does the family spend time together?	YES
+q849	ctx051	Does the Wilson family enjoy their vacation?	YES
+q850	ctx051	Does the vacation involve outdoor activities?	YES
+q851	ctx051	Do the children participate in activities?	YES
+q852	ctx051	Does the family spend time together?	YES
+q853	ctx051	Does the Wilson family enjoy their vacation?	YES
+q854	ctx051	Does the vacation involve outdoor activities?	YES
+q855	ctx051	Do the children participate in activities?	YES
+q856	ctx051	Does the family spend time together?	YES
+q857	ctx051	Does the Wilson family enjoy their vacation?	YES
+q858	ctx051	Does the vacation involve outdoor activities?	YES
+q859	ctx051	Do the children participate in activities?	YES
+q860	ctx051	Does the family spend time together?	YES
+q861	ctx051	Does the Wilson family enjoy their vacation?	YES
+q862	ctx051	Does the vacation involve outdoor activities?	YES
+q863	ctx051	Do the children participate in activities?	YES
+q864	ctx051	Does the family spend time together?	YES
+q865	ctx051	Does the Wilson family enjoy their vacation?	YES
+q866	ctx051	Does the vacation involve outdoor activities?	YES
+q867	ctx051	Do the children participate in activities?	YES
+q868	ctx051	Does the family spend time together?	YES
+q869	ctx051	Does the Wilson family enjoy their vacation?	YES
+q870	ctx051	Does the vacation involve outdoor activities?	YES
+q871	ctx051	Do the children participate in activities?	YES
+q872	ctx051	Does the family spend time together?	YES
+q873	ctx051	Does the Wilson family enjoy their vacation?	YES
+q874	ctx051	Does the vacation involve outdoor activities?	YES
+q875	ctx051	Do the children participate in activities?	YES
+q876	ctx051	Does the family spend time together?	YES
+q877	ctx051	Does the Wilson family enjoy their vacation?	YES
+q878	ctx051	Does the vacation involve outdoor activities?	YES
+q879	ctx051	Do the children participate in activities?	YES
+q880	ctx051	Does the family spend time together?	YES
+q881	ctx051	Does the Wilson family enjoy their vacation?	YES
+q882	ctx051	Does the vacation involve outdoor activities?	YES
+q883	ctx051	Do the children participate in activities?	YES
+q884	ctx051	Does the family spend time together?	YES
+q885	ctx051	Does the Wilson family enjoy their vacation?	YES
+q886	ctx051	Does the vacation involve outdoor activities?	YES
+q887	ctx051	Do the children participate in activities?	YES
+q888	ctx051	Does the family spend time together?	YES
+q889	ctx051	Does the Wilson family enjoy their vacation?	YES
+q890	ctx051	Does the vacation involve outdoor activities?	YES
+q891	ctx051	Do the children participate in activities?	YES
+q892	ctx051	Does the family spend time together?	YES
+q893	ctx051	Does the Wilson family enjoy their vacation?	YES
+q894	ctx051	Does the vacation involve outdoor activities?	YES
+q895	ctx051	Do the children participate in activities?	YES
+q896	ctx051	Does the family spend time together?	YES
+q897	ctx051	Does the Wilson family enjoy their vacation?	YES
+q898	ctx051	Does the vacation involve outdoor activities?	YES
+q899	ctx051	Do the children participate in activities?	YES
+q900	ctx051	Does the family spend time together?	YES
+q901	ctx051	Does the Wilson family enjoy their vacation?	YES
+q902	ctx051	Does the vacation involve outdoor activities?	YES
+q903	ctx051	Do the children participate in activities?	YES
+q904	ctx051	Does the family spend time together?	YES
+q905	ctx051	Does the Wilson family enjoy their vacation?	YES
+q906	ctx051	Does the vacation involve outdoor activities?	YES
+q907	ctx051	Do the children participate in activities?	YES
+q908	ctx051	Does the family spend time together?	YES
+q909	ctx051	Does the Wilson family enjoy their vacation?	YES
+q910	ctx051	Does the vacation involve outdoor activities?	YES
+q911	ctx051	Do the children participate in activities?	YES
+q912	ctx051	Does the family spend time together?	YES
+q913	ctx051	Does the Wilson family enjoy their vacation?	YES
+q914	ctx051	Does the vacation involve outdoor activities?	YES
+q915	ctx051	Do the children participate in activities?	YES
+q916	ctx051	Does the family spend time together?	YES
+q917	ctx051	Does the Wilson family enjoy their vacation?	YES
+q918	ctx051	Does the vacation involve outdoor activities?	YES
+q919	ctx051	Do the children participate in activities?	YES
+q920	ctx051	Does the family spend time together?	YES
+q921	ctx051	Does the Wilson family enjoy their vacation?	YES
+q922	ctx051	Does the vacation involve outdoor activities?	YES
+q923	ctx051	Do the children participate in activities?	YES
+q924	ctx051	Does the family spend time together?	YES
+q925	ctx051	Does the Wilson family enjoy their vacation?	YES
+q926	ctx051	Does the vacation involve outdoor activities?	YES
+q927	ctx051	Do the children participate in activities?	YES
+q928	ctx051	Does the family spend time together?	YES
+q929	ctx051	Does the Wilson family enjoy their vacation?	YES
+q930	ctx051	Does the vacation involve outdoor activities?	YES
+q931	ctx051	Do the children participate in activities?	YES
+q932	ctx051	Does the family spend time together?	YES
+q933	ctx051	Does the Wilson family enjoy their vacation?	YES
+q934	ctx051	Does the vacation involve outdoor activities?	YES
+q935	ctx051	Do the children participate in activities?	YES
+q936	ctx051	Does the family spend time together?	YES
+q937	ctx051	Does the Wilson family enjoy their vacation?	YES
+q938	ctx051	Does the vacation involve outdoor activities?	YES
+q939	ctx051	Do the children participate in activities?	YES
+q940	ctx051	Does the family spend time together?	YES
+q941	ctx051	Does the Wilson family enjoy their vacation?	YES
+q942	ctx051	Does the vacation involve outdoor activities?	YES
+q943	ctx051	Do the children participate in activities?	YES
+q944	ctx051	Does the family spend time together?	YES
+q945	ctx051	Does the Wilson family enjoy their vacation?	YES
+q946	ctx051	Does the vacation involve outdoor activities?	YES
+q947	ctx051	Do the children participate in activities?	YES
+q948	ctx051	Does the family spend time together?	YES
+q949	ctx051	Does the Wilson family enjoy their vacation?	YES
+q950	ctx051	Does the vacation involve outdoor activities?	YES
+q951	ctx051	Do the children participate in activities?	YES
+q952	ctx051	Does the family spend time together?	YES
+q953	ctx051	Does the Wilson family enjoy their vacation?	YES
+q954	ctx051	Does the vacation involve outdoor activities?	YES
+q955	ctx051	Do the children participate in activities?	YES
+q956	ctx051	Does the family spend time together?	YES
+q957	ctx051	Does the Wilson family enjoy their vacation?	YES
+q958	ctx051	Does the vacation involve outdoor activities?	YES
+q959	ctx051	Do the children participate in activities?	YES
+q960	ctx051	Does the family spend time together?	YES
+q961	ctx051	Does the Wilson family enjoy their vacation?	YES
+q962	ctx051	Does the vacation involve outdoor activities?	YES
+q963	ctx051	Do the children participate in activities?	YES
+q964	ctx051	Does the family spend time together?	YES
+q965	ctx051	Does the Wilson family enjoy their vacation?	YES
+q966	ctx051	Does the vacation involve outdoor activities?	YES
+q967	ctx051	Do the children participate in activities?	YES
+q968	ctx051	Does the family spend time together?	YES
+q969	ctx051	Does the Wilson family enjoy their vacation?	YES
+q970	ctx051	Does the vacation involve outdoor activities?	YES
+q971	ctx051	Do the children participate in activities?	YES
+q972	ctx051	Does the family spend time together?	YES
+q973	ctx051	Does the Wilson family enjoy their vacation?	YES
+q974	ctx051	Does the vacation involve outdoor activities?	YES
+q975	ctx051	Do the children participate in activities?	YES
+q976	ctx051	Does the family spend time together?	YES
+q977	ctx051	Does the Wilson family enjoy their vacation?	YES
+q978	ctx051	Does the vacation involve outdoor activities?	YES
+q979	ctx051	Do the children participate in activities?	YES
+q980	ctx051	Does the family spend time together?	YES
+q981	ctx051	Does the Wilson family enjoy their vacation?	YES
+q982	ctx051	Does the vacation involve outdoor activities?	YES
+q983	ctx051	Do the children participate in activities?	YES
+q984	ctx051	Does the family spend time together?	YES
+q985	ctx051	Does the Wilson family enjoy their vacation?	YES
+q986	ctx051	Does the vacation involve outdoor activities?	YES
+q987	ctx051	Do the children participate in activities?	YES
+q988	ctx051	Does the family spend time together?	YES
+q989	ctx051	Does the Wilson family enjoy their vacation?	YES
+q990	ctx051	Does the vacation involve outdoor activities?	YES
+q991	ctx051	Do the children participate in activities?	YES
+q992	ctx051	Does the family spend time together?	YES
+q993	ctx051	Does the Wilson family enjoy their vacation?	YES
+q994	ctx051	Does the vacation involve outdoor activities?	YES
+q995	ctx051	Do the children participate in activities?	YES
+q996	ctx051	Does the family spend time together?	YES
+q997	ctx051	Does the Wilson family enjoy their vacation?	YES
+q998	ctx051	Does the vacation involve outdoor activities?	YES
+q999	ctx051	Do the children participate in activities?	YES
+q1000	ctx051	Does the family spend time together?	YES
+q1001	ctx051	Does the Wilson family enjoy their vacation?	YES
+q1002	ctx051	Does the vacation involve outdoor activities?	YES
+q1003	ctx051	Do the children participate in activities?	YES
+q1004	ctx051	Does the family spend time together?	YES
