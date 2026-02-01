@@ -73,9 +73,8 @@ class MicroQueryEvaluator:
         """
         return f"""Context: {context}
 
-Question: {question}
 Answer the question with only YES or NO based on the context above.
-
+Question: {question}
 Answer:"""
 
     def _parse_answer(self, output: str) -> str:
@@ -125,23 +124,24 @@ Answer:"""
             "total_time": 0.0,
             "num_queries": len(questions),
             "cache_hits": 0,
+            "cache_misses": 0,
         }
 
         start_total = time.time()
 
         if use_cache and context in self.context_cache:
             metrics["context_cache_hit"] = True
-            metrics["cache_hits"] = len(questions)
             cached_prefix, cached_time = self.context_cache[context]
             metrics["context_processing_time"] = cached_time
             logger.info(f"Context cache HIT - reusing cached KV states")
         else:
-            logger.info("Context cache MISS - processing context for caching")
+            logger.info("Context cache MISS - processing context prefix for caching")
             start_context = time.time()
 
             # Process context as prefix to build KV cache
             # We create a prompt with context only and process it
-            context_prompt = f"Context: {context}\n\nQuestion:"
+            # The prefix must match exactly what will be used in queries for caching to work
+            context_prompt = f"Context: {context}\n\nAnswer the question with only YES or NO based on the context above.\nQuestion:"
             prefix_input = [TextPrompt(prompt=context_prompt)]
 
             # This triggers KV cache generation for the context prefix
@@ -155,13 +155,16 @@ Answer:"""
                 # Store reference to indicate context has been cached
                 # (vLLM manages the actual KV cache internally)
                 self.context_cache[context] = ([], context_time)
-                logger.info(f"Context processed and cached in {context_time:.3f}s")
+                logger.info(
+                    f"Context prefix processed and cached in {context_time:.3f}s"
+                )
 
         # Process each query using the cached context KV states
+        # First query on each context processes the prefix, subsequent queries reuse it
         for i, question in enumerate(questions):
             start_query = time.time()
 
-            # Create prompt with context (will hit prefix cache)
+            # Create prompt with context (will hit prefix cache for queries 2-N)
             prompt = self._create_prompt(context, question)
             inputs = [TextPrompt(prompt=prompt)]
 
@@ -174,6 +177,18 @@ Answer:"""
 
             query_time = time.time() - start_query
             metrics["query_times"].append(query_time)
+
+            # Track cache hits/misses at question level
+            # First question processes the full prompt, subsequent questions reuse cached prefix
+            if use_cache:
+                if metrics["context_cache_hit"]:
+                    metrics["cache_hits"] += 1
+                elif i == 0:
+                    metrics["cache_misses"] += 1
+                else:
+                    metrics["cache_hits"] += 1
+            else:
+                metrics["cache_misses"] += 1
 
             logger.debug(
                 f"Query {i + 1}/{len(questions)}: {question[:50]}... -> {answer} ({query_time:.3f}s)"
@@ -317,6 +332,8 @@ def save_results_to_tsv(
             "min_query_time",
             "max_query_time",
             "context_cache_hit",
+            "cache_hits",
+            "cache_misses",
         ]
 
         writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t")
@@ -349,6 +366,8 @@ def save_results_to_tsv(
                 "min_query_time": min_query_time,
                 "max_query_time": max_query_time,
                 "context_cache_hit": metrics["context_cache_hit"],
+                "cache_hits": metrics["cache_hits"],
+                "cache_misses": metrics["cache_misses"],
             }
             writer.writerow(row)
 
@@ -366,6 +385,8 @@ def save_summary_to_tsv(
     total_questions: int,
     total_contexts: int,
     total_time: float,
+    total_cache_hits: int,
+    total_cache_misses: int,
 ):
     """
     Save summary-level benchmark results to TSV file.
@@ -383,6 +404,8 @@ def save_summary_to_tsv(
         total_questions: Total number of questions
         total_contexts: Number of contexts evaluated
         total_time: Total time for all evaluations
+        total_cache_hits: Total cache hits across all contexts
+        total_cache_misses: Total cache misses across all contexts
     """
     file_exists = Path(summary_path).exists()
 
@@ -398,6 +421,8 @@ def save_summary_to_tsv(
             "total_correct",
             "overall_accuracy",
             "total_time",
+            "total_cache_hits",
+            "total_cache_misses",
         ]
 
         writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t")
@@ -418,6 +443,8 @@ def save_summary_to_tsv(
             "total_correct": total_correct,
             "overall_accuracy": overall_accuracy,
             "total_time": total_time,
+            "total_cache_hits": total_cache_hits,
+            "total_cache_misses": total_cache_misses,
         }
         writer.writerow(row)
 
@@ -512,6 +539,7 @@ def main():
     total_questions = 0
     all_results = []
     start_benchmark = time.time()
+    use_cache = not args.no_cache
 
     for ctx_id in sorted(grouped_questions.keys()):
         if ctx_id not in contexts:
@@ -533,7 +561,6 @@ def main():
         question_ids = [q["id"] for q in ctx_questions]
 
         # Evaluate queries
-        use_cache = not args.no_cache
         answers, metrics = evaluator.evaluate_queries(
             context, question_texts, use_cache=use_cache
         )
@@ -548,7 +575,9 @@ def main():
         # Print results
         print(f"\nResults:")
         print(f"  Accuracy: {accuracy:.2%} ({correct}/{len(ctx_questions)} correct)")
-        print(f"  Context cache hit: {metrics['context_cache_hit']}")
+        if use_cache:
+            print(f"  Cache hits: {metrics['cache_hits']}")
+            print(f"  Cache misses: {metrics['cache_misses']}")
         print(f"  Context processing time: {metrics['context_processing_time']:.3f}s")
         print(f"  Total evaluation time: {metrics['total_time']:.3f}s")
         if metrics["query_times"]:
@@ -580,6 +609,9 @@ def main():
     overall_accuracy = total_correct / total_questions if total_questions > 0 else 0.0
     total_benchmark_time = time.time() - start_benchmark
 
+    total_cache_hits = sum(r["metrics"]["cache_hits"] for r in all_results)
+    total_cache_misses = sum(r["metrics"]["cache_misses"] for r in all_results)
+
     print("\n" + "=" * 80)
     print("OVERALL SUMMARY")
     print("=" * 80)
@@ -588,18 +620,26 @@ def main():
     print(f"Total correct: {total_correct}")
     print(f"Overall accuracy: {overall_accuracy:.2%}")
     print(f"Total benchmark time: {total_benchmark_time:.3f}s")
+    if not args.no_cache:
+        print(f"Total cache hits: {total_cache_hits}")
+        print(f"Total cache misses: {total_cache_misses}")
 
     print("\nPer-context results:")
     for result in all_results:
+        metrics = result["metrics"]
+        cache_info = ""
+        if use_cache:
+            cache_info = (
+                f" (hits: {metrics['cache_hits']}, misses: {metrics['cache_misses']})"
+            )
         print(
-            f"  {result['context_id']}: {result['accuracy']:.2%} ({result['correct']}/{result['total']})"
+            f"  {result['context_id']}: {result['accuracy']:.2%} ({result['correct']}/{result['total']}){cache_info}"
         )
 
     print("\n" + "=" * 80)
 
     # Save results to TSV files
     if not args.no_save:
-        use_cache = not args.no_cache
         save_results_to_tsv(
             results=all_results,
             output_path=args.output,
@@ -622,6 +662,8 @@ def main():
             total_questions=total_questions,
             total_contexts=len(all_results),
             total_time=total_benchmark_time,
+            total_cache_hits=total_cache_hits,
+            total_cache_misses=total_cache_misses,
         )
         print(f"\nResults saved:")
         print(f"  Detailed: {args.output}")
