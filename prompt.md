@@ -33,3 +33,7 @@ INSTRUCTIONS:
 
 OUTPUT:
 - Produce Python code only, in a single code file (microqueries.py)
+- synthetic dataset can be created in ./dataset.tsv that contains two columns: id and text.
+- question dataset can be created in ./questions.tsv that contains three columns: id, question_text, and expected_answer.
+- focus more of your efforts on dataset creation, initially, if you notice the files don't exist yet.
+- you can create utility files for testing and operational stuff in other files
