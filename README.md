@@ -34,25 +34,43 @@ Each context has 10-21 associated micro-queries that test factual understanding 
 
 | Metric | Value |
 |--------|-------|
-| Overall Accuracy | 74.64% (209/280) |
+| Overall Accuracy | 81.31% (396/487) |
 | Average Query Time | ~0.02s |
-| Total Evaluation Time | ~30-40s for 280 queries |
+| Total Evaluation Time | ~8-10s for 487 queries |
 | Context Processing Time | ~0.05-0.07s per context |
 
 Best performing contexts (100% accuracy):
 - ctx006: Quantum mechanics
 - ctx009: The Renaissance
+- ctx027: Ancient Egypt
+- ctx030: Artificial neural networks
+- ctx034: Photosynthesis vs cellular respiration
+- ctx035: Stock market
+- ctx039: Binary code
+- ctx040: Cardiovascular system
 
 More challenging contexts (reading comprehension with narrative details):
-- ctx013: Family reunion (47%)
-- ctx015: Bookstore meeting (53%)
-- ctx017: Dinner party (47%)
+- ctx013: Family reunion (46.67%)
+- ctx015: Bookstore meeting (53.33%)
+- ctx017: Dinner party (46.67%)
+
+### Performance Notes
+- Scientific and technical contexts generally achieve higher accuracy (80-100%)
+- Reading comprehension narratives with multiple character interactions are more challenging (46-86%)
+- Historical contexts perform well (80-100%)
 
 ## Requirements
 
 ```bash
 pip install vllm
 ```
+
+## Hardware Used for Benchmarking
+
+- **GPU**: NVIDIA RTX 4090 (24GB GDDR6X)
+- **CPU**: AMD Ryzen 7 7800X3D (8-core/16-thread)
+- **RAM**: 62 GB DDR5
+- **OS**: Linux fedora 6.17.9-200.fc42.x86_64
 
 ## Usage
 
@@ -65,7 +83,13 @@ python microqueries.py
 Run with a specific local model:
 
 ```bash
-python microqueries.py --model microsoft/Phi-3-mini-4k-instruct
+python microqueries.py --model microsoft/Phi-3-mini-4k-instruct --gpu-memory-utilization 0.5
+```
+
+Run with timeout (recommended for benchmarks):
+
+```bash
+timeout 300 python microqueries.py --model Qwen/Qwen2.5-0.5B-Instruct --gpu-memory-utilization 0.5
 ```
 
 Run with verbose output:
@@ -112,7 +136,9 @@ The benchmark tracks:
 ## Files
 
 - `microqueries.py` - Main implementation with vLLM and KV caching
-- `dataset.tsv` - Context texts (20 entries)
-- `questions.tsv` - Micro-queries with expected answers (280 entries)
+- `dataset.tsv` - Context texts (41 entries)
+- `questions.tsv` - Micro-queries with expected answers (487 entries)
 - `validate.py` - Validate dataset format
 - `prompt.md` - Original task description
+- `AGENTS.md` - AI agent usage and development workflow
+- `HARDWARE.md` - Hardware specifications used for benchmarking (gitignored)

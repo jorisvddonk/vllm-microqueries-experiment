@@ -279,3 +279,212 @@ q277	ctx020	Do they eat a full meal?	NO
 q278	ctx020	Does the power stay out all night?	NO
 q279	ctx020	Is Lucas scared?	NO
 q280	ctx020	Does Michael use the fireplace?	YES
+id	context_id	question_text	expected_answer
+q281	ctx021	Is plate tectonics a scientific theory?	YES
+q282	ctx021	Are Earth's plates stationary?	NO
+q283	ctx021	Do plates float on the asthenosphere?	YES
+q284	ctx021	Are there three main types of plate boundaries?	YES
+q285	ctx021	Do divergent boundaries involve plates colliding?	NO
+q286	ctx021	Do plates move apart at divergent boundaries?	YES
+q287	ctx021	Is magma created at divergent boundaries?	YES
+q288	ctx021	Do convergent boundaries form mountains?	YES
+q289	ctx021	Do transform boundaries involve vertical movement?	NO
+q290	ctx021	Does plate tectonics explain earthquakes?	YES
+q291	ctx021	Is the lithosphere a semi-fluid layer?	NO
+q292	ctx021	Does one plate subduct at convergent boundaries?	YES
+q293	ctx022	Is the water cycle also called the hydrologic cycle?	YES
+q294	ctx022	Does water evaporate from oceans?	YES
+q295	ctx022	Do plants contribute to the water cycle?	YES
+q296	ctx022	Is transpiration the process of water absorption by roots?	NO
+q297	ctx022	Do plants release water vapor through transpiration?	YES
+q298	ctx022	Does condensation form clouds?	YES
+q299	ctx022	Does precipitation only occur as rain?	NO
+q300	ctx022	Can precipitation be snow?	YES
+q301	ctx022	Does some water become groundwater?	YES
+q302	ctx022	Is runoff water that flows over land?	YES
+q303	ctx022	Does the water cycle support all life forms?	YES
+q304	ctx022	Is water vapor a gas?	YES
+q305	ctx023	Did World War I begin in 1914?	YES
+q306	ctx023	Was World War I fought only in Europe?	NO
+q307	ctx023	Was Archduke Franz Ferdinand assassinated?	YES
+q308	ctx023	Was the United States a Central Power?	NO
+q309	ctx023	Was Germany a Central Power?	YES
+q310	ctx023	Was Britain an Allied Power?	YES
+q311	ctx023	Did the war introduce tanks?	YES
+q312	ctx023	Was trench warfare common on the Western Front?	YES
+q313	ctx023	Did the war end with Germany's victory?	NO
+q314	ctx023	Did the Treaty of Versailles redraw boundaries?	YES
+q315	ctx023	Were machine guns used in WWI?	YES
+q316	ctx023	Did airplanes exist during WWI?	YES
+q317	ctx024	Does digestion begin in the stomach?	NO
+q318	ctx024	Does digestion begin in the mouth?	YES
+q319	ctx024	Is food broken down by enzymes?	YES
+q320	ctx024	Does food travel through the esophagus?	YES
+q321	ctx024	Is most nutrient absorption in the small intestine?	YES
+q322	ctx024	Does the large intestine absorb water?	YES
+q323	ctx024	Does the pancreas produce bile?	NO
+q324	ctx024	Does the liver produce bile?	YES
+q325	ctx024	Does the digestive system include the liver?	YES
+q326	ctx024	Is waste eliminated through the rectum?	YES
+q327	ctx025	Is electricity the movement of charged particles?	YES
+q328	ctx025	Do electrons flow in metals?	YES
+q329	ctx025	Is voltage measured in ohms?	NO
+q330	ctx025	Is voltage measured in volts?	YES
+q331	ctx025	Is resistance measured in ohms?	YES
+q332	ctx025	Does Ohm's Law relate current, voltage, and resistance?	YES
+q333	ctx025	Can electric circuits be series or parallel?	YES
+q334	ctx025	Is solar power a source of electricity generation?	YES
+q335	ctx025	Is wind power a renewable energy source?	YES
+q336	ctx025	Does resistance oppose current flow?	YES
+q337	ctx026	Does the immune system defend against infections?	YES
+q338	ctx026	Are white blood cells part of the immune system?	YES
+q339	ctx026	Is the spleen part of the immune system?	YES
+q340	ctx026	Is innate immunity specific to particular pathogens?	NO
+q341	ctx026	Does adaptive immunity develop specific responses?	YES
+q342	ctx026	Do B cells produce antibodies?	YES
+q343	ctx026	Do T cells attack infected cells?	YES
+q344	ctx026	Does vaccination stimulate adaptive immunity?	YES
+q345	ctx026	Can immune system malfunction cause autoimmune diseases?	YES
+q346	ctx026	Is skin part of innate immunity?	YES
+q347	ctx027	Was Ancient Egypt located along the Nile River?	YES
+q348	ctx027	Were pharaohs considered divine rulers?	YES
+q349	ctx027	Did Egyptians develop hieroglyphic writing?	YES
+q350	ctx027	Did Egyptians build the Great Pyramid of Giza?	YES
+q351	ctx027	Were pyramids built as tombs?	YES
+q352	ctx027	Did Egyptians practice mummification?	YES
+q353	ctx027	Was Ancient Egypt a short-lived civilization?	NO
+q354	ctx027	Did Egypt contribute to astronomy?	YES
+q355	ctx027	Were farmers at the top of Egyptian society?	NO
+q356	ctx027	Did Egyptian civilization last over 3,000 years?	YES
+q357	ctx028	Did the French Revolution begin in 1789?	YES
+q358	ctx028	Was the storming of the Bastille a key event?	YES
+q359	ctx028	Did the revolution abolish the monarchy?	YES
+q360	ctx028	Was the Reign of Terror led by Robespierre?	YES
+q361	ctx028	Did Napoleon rise to power during the revolution?	YES
+q362	ctx028	Did the revolution establish a republic?	YES
+q363	ctx028	Was the Declaration of the Rights of Man created?	YES
+q364	ctx028	Did the revolution spread ideas of democracy?	YES
+q365	ctx028	Was the revolution caused by social equality?	NO
+q366	ctx028	Were feudal privileges abolished?	YES
+q367	ctx028	Did the revolution inspire independence movements?	YES
+q369	ctx029	Does cellular respiration produce ATP?	YES
+q370	ctx029	Is glycolysis the first stage of cellular respiration?	YES
+q371	ctx029	Does glycolysis occur in the mitochondria?	NO
+q372	ctx029	Does glycolysis occur in the cytoplasm?	YES
+q373	ctx029	Does the citric acid cycle occur in mitochondria?	YES
+q374	ctx029	Is oxygen the final electron acceptor?	YES
+q375	ctx029	Does oxidative phosphorylation produce the most ATP?	YES
+q376	ctx029	Does glycolysis break down glucose into pyruvate?	YES
+q377	ctx029	Is cellular respiration essential for energy production?	YES
+q378	ctx029	Does the process occur in all living organisms?	YES
+q379	ctx030	Are artificial neural networks inspired by biological neural networks?	YES
+q380	ctx030	Do neural networks consist of interconnected nodes?	YES
+q381	ctx030	Are there input, hidden, and output layers?	YES
+q382	ctx030	Do connections have adjustable weights?	YES
+q383	ctx030	Does backpropagation adjust weights during training?	YES
+q384	ctx030	Is deep learning related to neural networks?	YES
+q385	ctx030	Do neural networks learn from training data?	YES
+q386	ctx030	Can neural networks be used for image recognition?	YES
+q387	ctx030	Have neural networks surpassed human performance in some tasks?	YES
+q388	ctx030	Is natural language processing an application of neural networks?	YES
+id	context_id	question_text	expected_answer
+q389	ctx031	Is the metric system based on powers of ten?	YES
+q390	ctx031	Is the meter the base unit for length?	YES
+q391	ctx031	Is a kilometer 100 meters?	NO
+q392	ctx031	Is a kilometer 1,000 meters?	YES
+q393	ctx031	Is the gram the base unit for mass?	YES
+q394	ctx031	Is a kilogram 1,000 grams?	YES
+q395	ctx031	Is a centimeter 0.1 meters?	NO
+q396	ctx031	Is a centimeter 0.01 meters?	YES
+q397	ctx031	Is temperature measured in degrees Celsius?	YES
+q398	ctx031	Does water freeze at 100°C?	NO
+q399	ctx031	Does water boil at 100°C?	YES
+q400	ctx032	Did Newton develop laws of motion?	YES
+q401	ctx032	Is Newton's first law the law of inertia?	YES
+q402	ctx032	Does an object in motion stay in motion without external force?	YES
+q403	ctx032	Is Newton's second law F=ma?	YES
+q404	ctx032	Is force proportional to mass?	NO
+q405	ctx032	Is acceleration proportional to force?	YES
+q406	ctx032	Is Newton's third law about action and reaction?	YES
+q407	ctx032	Do actions have equal and opposite reactions?	YES
+q408	ctx032	Do these laws form classical mechanics?	YES
+q409	ctx033	Does the periodic table organize chemical elements?	YES
+q410	ctx033	Are elements organized by atomic number?	YES
+q411	ctx033	Are there periods and groups in the periodic table?	YES
+q412	ctx033	Do elements in the same group have similar properties?	YES
+q413	ctx033	Is hydrogen in the first period?	YES
+q434	ctx033	Are noble gases chemically inert?	YES
+q435	ctx033	Are noble gases in group 18?	YES
+q436	ctx033	Is iron a transition metal?	YES
+q437	ctx033	Is gold a nonmetal?	NO
+q438	ctx033	Does the periodic table help predict chemical reactions?	YES
+q439	ctx034	Are photosynthesis and cellular respiration complementary?	YES
+q440	ctx034	Does photosynthesis use carbon dioxide?	YES
+q441	ctx034	Does photosynthesis produce oxygen?	YES
+q442	ctx034	Does cellular respiration use oxygen?	YES
+q443	ctx034	Does cellular respiration produce carbon dioxide?	YES
+q444	ctx034	Do plants carry out both processes?	YES
+q445	ctx034	Do animals carry out photosynthesis?	NO
+q446	ctx034	Does photosynthesis require sunlight?	YES
+q447	ctx034	Does cellular respiration produce ATP?	YES
+q448	ctx034	Do these processes maintain atmospheric gas balance?	YES
+q449	ctx035	Is the stock market where shares are traded?	YES
+q450	ctx035	Does a stock represent company ownership?	YES
+q451	ctx035	Do stock prices fluctuate based on supply and demand?	YES
+q452	ctx035	Is the NYSE a stock exchange?	YES
+q453	ctx035	Do investors hope stocks will rise in price?	YES
+q454	ctx035	Do companies pay dividends?	YES
+q455	ctx035	Does the S&P 500 track stock performance?	YES
+q456	ctx035	Is the Dow Jones Industrial Average a stock index?	YES
+q457	ctx035	Are stock prices influenced by economic conditions?	YES
+q458	ctx035	Can stock prices be affected by global events?	YES
+q459	ctx036	Do viruses only replicate inside host cells?	YES
+q460	ctx036	Do viruses consist of genetic material and a protein coat?	YES
+q461	ctx036	Can viruses infect plants?	YES
+q462	ctx036	Do viruses hijack cellular machinery?	YES
+q463	ctx036	Does a virus often destroy the host cell?	YES
+q464	ctx036	Is influenza a viral disease?	YES
+q465	ctx036	Can vaccines prevent viral infections?	YES
+q466	ctx036	Are viruses considered living organisms?	NO
+q467	ctx036	Do viruses have DNA or RNA?	YES
+q468	ctx036	Can viruses infect bacteria?	YES
+q469	ctx037	Did Renaissance art emphasize realism?	YES
+q470	ctx037	Was Leonardo da Vinci a Renaissance artist?	YES
+q471	ctx037	Is the Mona Lisa famous?	YES
+q472	ctx037	Did Michelangelo sculpt David?	YES
+q473	ctx037	Did Michelangelo paint the Sistine Chapel ceiling?	YES
+q474	ctx037	Did Renaissance artists develop linear perspective?	YES
+q475	ctx037	Did artists study anatomy?	YES
+q476	ctx037	Was oil painting popular during the Renaissance?	YES
+q477	ctx037	Did Renaissance art influence Western art?	YES
+q478	ctx037	Was Raphael a Renaissance artist?	YES
+q479	ctx038	Are biomes large ecological areas?	YES
+q480	ctx038	Do biomes have similar climate conditions?	YES
+q481	ctx038	Are tropical rainforests a type of biome?	YES
+q482	ctx038	Do tropical rainforests have high rainfall?	YES
+q483	ctx038	Do deserts receive little precipitation?	YES
+q484	ctx038	Are grasslands characterized by trees?	NO
+q485	ctx038	Are tundras cold?	YES
+q486	ctx038	Do tundras have permafrost?	YES
+q487	ctx038	Are there aquatic biomes?	YES
+q488	ctx038	Are coral reefs marine ecosystems?	YES
+q489	ctx039	Is binary code based on 0 and 1?	YES
+q490	ctx039	Is a bit a binary digit?	YES
+q491	ctx039	Are eight bits a byte?	YES
+q492	ctx039	Do computers use binary?	YES
+q493	ctx039	Can binary represent on and off states?	YES
+q494	ctx039	Is all digital data stored as binary?	YES
+q495	ctx039	Does ASCII map binary to characters?	YES
+q496	ctx039	Is 'A' represented by 01000001 in ASCII?	YES
+q497	ctx039	Is binary understanding important for programming?	YES
+q498	ctx039	Does binary arithmetic use only two digits?	YES
+q499	ctx040	Does the cardiovascular system include the heart?	YES
+q500	ctx040	Do arteries carry blood away from the heart?	YES
+q501	ctx040	Do arteries carry oxygenated blood?	YES
+q502	ctx040	Do veins return blood to the heart?	YES
+q503	ctx040	Do capillaries exchange gases?	YES
+q504	ctx040	Does blood contain plasma?	YES
+q505	ctx040	Do red blood cells carry oxygen?	YES
+q506	ctx040	Do white blood cells fight infection?	YES
+q507	ctx040	Do platelets help with clotting?	YES
+q508	ctx040	Does the heart create blood pressure?	YES
