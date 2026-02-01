@@ -53,10 +53,16 @@ class MicroQueryEvaluator:
             gpu_memory_utilization=gpu_memory_utilization,
             enforce_eager=True,
         )
+        tokenizer = self.llm.get_tokenizer()
+        yes_tokens = tokenizer.encode("YES", add_special_tokens=False)
+        no_tokens = tokenizer.encode("NO", add_special_tokens=False)
+        allowed_tokens = yes_tokens + no_tokens
+        logger.info(f"Restricted output tokens: YES={yes_tokens}, NO={no_tokens}")
         self.sampling_params = SamplingParams(
             temperature=0.0,
             max_tokens=10,
             stop=["\n"],
+            allowed_token_ids=allowed_tokens,
         )
         self.context_cache: Dict[str, Tuple[List, float]] = {}
 
