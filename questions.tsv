@@ -1,0 +1,281 @@
+id	context_id	question_text	expected_answer
+q001	ctx001	Does the solar system have eight planets?	YES
+q002	ctx001	Is Mercury the farthest planet from the Sun?	NO
+q003	ctx001	Does Venus have an atmosphere?	YES
+q004	ctx001	Is Earth known as the Red Planet?	NO
+q005	ctx001	Does Earth have liquid water on its surface?	YES
+q006	ctx001	Is Mars known as the Red Planet?	YES
+q007	ctx001	Is Jupiter the smallest planet?	NO
+q008	ctx001	Does Jupiter have a Great Red Spot?	YES
+q009	ctx001	Is Saturn known for its ring system?	YES
+q010	ctx001	Does Uranus rotate on its side?	YES
+q011	ctx001	Is Uranus closer to the Sun than Mercury?	NO
+q012	ctx001	Does Neptune have the strongest winds in the solar system?	YES
+q013	ctx001	Is Neptune the closest planet to the Sun?	NO
+q014	ctx002	Are all planets in the solar system gas giants?	NO
+q015	ctx002	Does the Sun orbit around the planets?	NO
+q016	ctx002	Does Mercury have no atmosphere?	YES
+q017	ctx002	Is Earth the only known planet to support life?	YES
+q018	ctx002	Does Saturn's ring system consist of solid rings only?	NO
+q019	ctx002	Is Jupiter larger than Earth?	YES
+q020	ctx002	Does Mars have iron oxide on its surface?	YES
+q021	ctx002	Does photosynthesis convert sunlight into energy?	YES
+q022	ctx002	Do plants use carbon dioxide during photosynthesis?	YES
+q023	ctx002	Does photosynthesis occur in the roots of plants?	NO
+q024	ctx002	Is chlorophyll used to absorb sunlight in photosynthesis?	YES
+q025	ctx002	Does photosynthesis produce carbon dioxide as a byproduct?	NO
+q026	ctx002	Is glucose produced during photosynthesis?	YES
+q027	ctx002	Does photosynthesis primarily occur in the leaves?	YES
+q028	ctx002	Are chloroplasts where photosynthesis occurs?	YES
+q029	ctx002	Does photosynthesis release oxygen?	YES
+q030	ctx002	Is water used during photosynthesis?	YES
+q031	ctx002	Is photosynthesis essential for life on Earth?	YES
+q032	ctx002	Do plants absorb oxygen during photosynthesis?	NO
+q033	ctx002	Does glucose serve as food for the plant?	YES
+q034	ctx002	Is photosynthesis the base of most food chains?	YES
+q035	ctx003	Does the American Civil War occur from 1861 to 1865?	YES
+q036	ctx003	Was the Civil War fought between the North and South?	YES
+q037	ctx003	Was Abraham Lincoln the leader of the Confederacy?	NO
+q038	ctx003	Was slavery a primary cause of the Civil War?	YES
+q039	ctx003	Was the Union led by Jefferson Davis?	NO
+q040	ctx003	Was Gettysburg a major battle in the Civil War?	YES
+q041	ctx003	Did the Union win the Civil War?	YES
+q042	ctx003	Was slavery abolished through the 13th Amendment?	YES
+q043	ctx003	Was the Civil War the deadliest war in American history?	YES
+q044	ctx003	Did over 100,000 soldiers die in the Civil War?	NO
+q045	ctx003	Was Antietam a major battle in the Civil War?	YES
+q046	ctx003	Did the Confederacy win the Civil War?	NO
+q047	ctx003	Was Vicksburg a major battle in the Civil War?	YES
+q048	ctx003	Were states' rights a cause of the Civil War?	YES
+q049	ctx004	Did DNA carry genetic information?	YES
+q050	ctx004	Does DNA have a single strand structure?	NO
+q051	ctx004	Is DNA organized into chromosomes?	YES
+q052	ctx004	Does adenine pair with cytosine?	NO
+q053	ctx004	Does guanine pair with cytosine?	YES
+q054	ctx004	Does DNA contain four types of bases?	YES
+q055	ctx004	Is thymine one of the DNA bases?	YES
+q056	ctx004	Is DNA found in the nucleus of cells?	YES
+q057	ctx004	Does DNA have a double helix structure?	YES
+q058	ctx004	Do humans have 23 pairs of chromosomes?	YES
+q059	ctx004	Does human DNA contain approximately 3 billion base pairs?	YES
+q060	ctx004	Is DNA made of nucleotides?	YES
+q061	ctx004	Does uracil appear in DNA?	NO
+q062	ctx005	Did the Industrial Revolution begin in the United States?	NO
+q063	ctx005	Did the Industrial Revolution begin in Britain?	YES
+q064	ctx005	Was the steam engine a key invention of the Industrial Revolution?	YES
+q065	ctx005	Did the Industrial Revolution lead to urbanization?	YES
+q066	ctx005	Did the Industrial Revolution reduce production efficiency?	NO
+q067	ctx005	Was the spinning jenny invented during the Industrial Revolution?	YES
+q068	ctx005	Did the Industrial Revolution improve working conditions?	NO
+q069	ctx005	Was the power loom an invention of the Industrial Revolution?	YES
+q070	ctx005	Did the Industrial Revolution lead to environmental pollution?	YES
+q071	ctx005	Did the Industrial Revolution use machine manufacturing?	YES
+q072	ctx005	Did the Industrial Revolution occur in the late 18th century?	YES
+q073	ctx005	Did child labor increase during the Industrial Revolution?	YES
+q074	ctx006	Does quantum mechanics describe nature at small scales?	YES
+q075	ctx006	Is wave-particle duality a principle of quantum mechanics?	YES
+q076	ctx006	Does the uncertainty principle allow perfect measurement of all properties?	NO
+q077	ctx006	Can quantum systems exist in multiple states at once?	YES
+q078	ctx006	Did quantum mechanics lead to the invention of transistors?	YES
+q079	ctx006	Is superposition a principle of quantum mechanics?	YES
+q080	ctx006	Can particles exhibit both wave-like and particle-like properties?	YES
+q081	ctx006	Does quantum mechanics apply only to large objects?	NO
+q082	ctx006	Did quantum mechanics lead to the development of lasers?	YES
+q083	ctx006	Is quantum computing related to quantum mechanics?	YES
+q084	ctx007	Does the human heart have four chambers?	YES
+q085	ctx007	Does blood enter the right atrium from the lungs?	NO
+q086	ctx007	Does the left ventricle pump blood to the body?	YES
+q087	ctx007	Is the sinoatrial node the natural pacemaker of the heart?	YES
+q088	ctx007	Does the heart have three chambers?	NO
+q089	ctx007	Is blood pumped to the lungs from the right ventricle?	YES
+q090	ctx007	Does a healthy heart beat 1000 times per minute at rest?	NO
+q091	ctx007	Does the heart have an electrical system?	YES
+q092	ctx007	Does oxygenated blood enter the left atrium?	YES
+q093	ctx008	Is carbon dioxide a greenhouse gas?	YES
+q094	ctx008	Is the burning of fossil fuels a primary cause of climate change?	YES
+q095	ctx008	Does climate change cause global cooling?	NO
+q096	ctx008	Is methane a greenhouse gas?	YES
+q097	ctx008	Does climate change include rising sea levels?	YES
+q098	ctx008	Is the Paris Agreement related to climate change?	YES
+q099	ctx008	Does climate change cause melting ice caps?	YES
+q100	ctx008	Is solar power a renewable energy source?	YES
+q101	ctx008	Does wind power produce greenhouse gases?	NO
+q102	ctx008	Does the Paris Agreement aim to limit warming to 2 degrees Celsius?	YES
+q103	ctx008	Is climate change a short-term weather pattern?	NO
+q104	ctx009	Did the Renaissance begin in Italy?	YES
+q105	ctx009	Was the Renaissance a cultural movement?	YES
+q106	ctx009	Did the Renaissance begin in the 14th century?	YES
+q107	ctx009	Was Leonardo da Vinci a figure of the Renaissance?	YES
+q108	ctx009	Was the printing press invented during the Renaissance?	YES
+q109	ctx009	Did the Renaissance mark a transition from modernity to the Middle Ages?	NO
+q110	ctx009	Was Shakespeare a Renaissance figure?	YES
+q111	ctx009	Did the Renaissance emphasize humanism?	YES
+q112	ctx009	Did the Renaissance only occur in Italy?	NO
+q113	ctx009	Was Galileo a figure of the Renaissance?	YES
+q114	ctx009	Did the Renaissance lead to increased scientific inquiry?	YES
+q115	ctx010	Does machine learning enable computers to learn from data?	YES
+q116	ctx010	Is machine learning a type of artificial intelligence?	YES
+q117	ctx010	Does supervised learning use unlabeled data?	NO
+q118	ctx010	Is reinforcement learning a type of machine learning?	YES
+q119	ctx010	Do neural networks use labeled data to train?	YES
+q120	ctx010	Does machine learning require explicit programming?	NO
+q121	ctx010	Is k-means clustering a machine learning algorithm?	YES
+q122	ctx010	Does unsupervised learning use labeled data?	NO
+q123	ctx010	Is image recognition an application of machine learning?	YES
+q124	ctx010	Do support vector machines require labeled data for training?	YES
+q125	ctx010	Is natural language processing a machine learning application?	YES
+q126	ctx010	Does machine learning have three main types?	YES
+q127	ctx010	Does reinforcement learning involve trial and error?	YES
+q128	ctx010	Do decision trees use labeled data?	YES
+q129	ctx010	Is recommendation system a machine learning application?	YES
+q130	ctx010	Does unsupervised learning find patterns in unlabeled data?	YES
+q131	ctx011	Is Marcus male?	YES
+q132	ctx011	Does Marcus wear a white shirt to his interview?	NO
+q133	ctx011	Does Sarah suggest Marcus wear a blue shirt?	YES
+q134	ctx011	Does Marcus take off his clothes during the text?	YES
+q135	ctx011	Does Marcus have a job before the interview?	NO
+q136	ctx011	Does Marcus eat something in this text?	NO
+q137	ctx011	Does Marcus put on a blazer?	YES
+q138	ctx011	Does Marcus get the job?	YES
+q139	ctx011	Does Sarah go to the interview with Marcus?	NO
+q140	ctx011	Does Marcus drink coffee?	YES
+q141	ctx011	Is Marcus female?	NO
+q142	ctx011	Does Marcus walk to the interview?	YES
+q143	ctx011	Does Marcus work on a novel?	NO
+q144	ctx011	Does Marcus wear a tie?	YES
+q145	ctx011	Does the interview last two hours?	YES
+q146	ctx012	Is Elena writing a book?	YES
+q147	ctx012	Does Elena eat something in this text?	YES
+q148	ctx012	Is Elena's cat named Fluffy?	NO
+q149	ctx012	Does Elena take a break from writing?	YES
+q150	ctx012	Does Elena eat pasta?	YES
+q151	ctx012	Does Elena go outside during the text?	NO
+q152	ctx012	Is Elena's cat named Whiskers?	YES
+q153	ctx012	Does Elena feed her cat treats?	YES
+q154	ctx012	Does Elena write more than three paragraphs?	NO
+q155	ctx012	Is Elena male?	NO
+q156	ctx012	Does Elena drink something?	YES
+q157	ctx012	Does Elena read a newspaper?	NO
+q158	ctx012	Does Elena clean up a mess?	NO
+q159	ctx012	Does Elena finish her novel?	NO
+q160	ctx012	Does Elena stand while eating?	YES
+q161	ctx013	Does the family reunion happen indoors?	NO
+q162	ctx013	Does Grandma Clara bring apple pie?	YES
+q163	ctx013	Does Uncle Tom bring alcohol?	YES
+q164	ctx013	Does Dad cook burgers?	YES
+q165	ctx013	Does Maya spill juice?	YES
+q166	ctx013	Is Liam Maya's brother?	YES
+q167	ctx013	Does Dad cook hot dogs?	YES
+q168	ctx013	Does Mom set the table with real plates?	NO
+q169	ctx013	Do the children sit quietly?	NO
+q170	ctx013	Does Maya cry?	YES
+q171	ctx013	Does Liam help clean the mess?	YES
+q172	ctx013	Does anyone take photos?	YES
+q173	ctx013	Is Clara male?	NO
+q174	ctx013	Does Tom bring food?	NO
+q175	ctx013	Do teenagers play outside?	NO
+q176	ctx014	Does Emma buy a winter coat?	YES
+q177	ctx014	Does Emma buy shoes?	YES
+q178	ctx014	Does Emma buy a necklace?	YES
+q179	ctx014	Does Emma accept the store credit card?	NO
+q180	ctx014	Does Emma drive home?	YES
+q181	ctx014	Does Emma buy medicine?	YES
+q182	ctx014	Is Emma male?	NO
+q183	ctx014	Does Emma try on several pairs of shoes?	YES
+q184	ctx014	Does Emma buy a gift for her father?	NO
+q185	ctx014	Does Emma pay with cash?	NO
+q186	ctx014	Does Emma shop online?	NO
+q187	ctx014	Does Emma buy a white coat?	NO
+q188	ctx014	Does Emma buy comfortable shoes?	YES
+q189	ctx014	Does Emma visit a pharmacy?	YES
+q190	ctx014	Does Emma walk home?	NO
+q191	ctx015	Does Jasmine order coffee?	YES
+q192	ctx015	Does Maya order coffee?	NO
+q193	ctx015	Does Jasmine eat a muffin?	YES
+q194	ctx015	Does Maya pay with cash?	YES
+q195	ctx015	Does Jasmine spoil the ending of the book?	YES
+q196	ctx015	Do they buy roasted nuts?	YES
+q197	ctx015	Do they go to a park?	YES
+q198	ctx015	Is Maya annoyed with Jasmine?	YES
+q199	ctx015	Does Jasmine pay?	NO
+q200	ctx015	Does Maya order tea?	YES
+q201	ctx015	Do they meet at a bookstore café?	YES
+q202	ctx015	Do they share food?	YES
+q203	ctx015	Does Jasmine eat a donut?	NO
+q204	ctx015	Do they visit the park at night?	NO
+q205	ctx015	Is Maya male?	NO
+q206	ctx016	Does David wake up early?	YES
+q207	ctx016	Does David go running?	YES
+q208	ctx016	Does David eat eggs?	YES
+q209	ctx016	Does David take the subway to work?	YES
+q210	ctx016	Does David drink water while running?	YES
+q211	ctx016	Does David watch TV while eating?	YES
+q212	ctx016	Does David drive to work?	NO
+q213	ctx016	Does David have a job?	YES
+q214	ctx016	Does David eat cereal?	NO
+q215	ctx016	Does David exercise in a gym?	NO
+q216	ctx016	Does David sleep late?	NO
+q217	ctx016	Does David go to bed during the text?	NO
+q218	ctx016	Does David run for less than an hour?	YES
+q219	ctx016	Does David take a shower?	YES
+q220	ctx016	Does David work from home?	NO
+q221	ctx017	Do Alex and Taylor host a dinner party?	YES
+q222	ctx017	Does Taylor cook?	YES
+q223	ctx017	Does Alex set the table?	YES
+q224	ctx017	Do they serve chicken?	YES
+q225	ctx017	Does Taylor serve dessert?	YES
+q226	ctx017	Do they have six guests?	YES
+q227	ctx017	Does anyone pay for the food?	NO
+q228	ctx017	Do they eat cake for dessert?	YES
+q229	ctx017	Do they clean up after midnight?	YES
+q230	ctx017	Do guests arrive before 7 PM?	NO
+q231	ctx017	Does Taylor cook vegetables?	YES
+q232	ctx017	Does Alex cook?	NO
+q233	ctx017	Do they serve wine?	YES
+q234	ctx017	Do guests leave early?	NO
+q235	ctx017	Is Alex female?	YES
+q236	ctx018	Does Nora check into a hotel?	YES
+q237	ctx018	Does Nora drive to the hotel?	NO
+q238	ctx018	Does Nora's room face the ocean?	YES
+q239	ctx018	Does Nora unpack her suitcase?	YES
+q240	ctx018	Does Nora take a nap?	YES
+q241	ctx018	Does Nora eat fish and chips?	YES
+q242	ctx018	Does Nora go to the beach?	YES
+q243	ctx018	Does Nora collect seashells?	YES
+q244	ctx018	Does Nora stay on the first floor?	NO
+q245	ctx018	Does Nora eat dinner in her room?	NO
+q246	ctx018	Does Nora go swimming?	NO
+q247	ctx018	Does Nora nap for more than two hours?	NO
+q248	ctx018	Does Nora stay the night?	YES
+q249	ctx018	Does Nora eat by candlelight?	NO
+q250	ctx018	Does Nora travel alone?	YES
+q251	ctx019	Does Leo take piano lessons?	YES
+q252	ctx019	Is Leo seven years old?	YES
+q253	ctx019	Does Leo play "Twinkle, Twinkle, Little Star"?	YES
+q254	ctx019	Does Mrs. Henderson give Leo candy?	YES
+q255	ctx019	Does Maria pay for the lesson?	YES
+q256	ctx019	Is Mrs. Henderson male?	NO
+q257	ctx019	Is Leo male?	YES
+q258	ctx019	Does Leo eat during the lesson?	NO
+q259	ctx019	Does Maria wait in the living room?	NO
+q260	ctx019	Does Leo learn a new song?	NO
+q261	ctx019	Do they go to the grocery store?	YES
+q262	ctx019	Does Leo struggle with the lesson?	YES
+q263	ctx019	Is Maria Leo's mother?	YES
+q264	ctx019	Does Leo finish without mistakes?	NO
+q265	ctx019	Does Leo learn to play the guitar?	NO
+q266	ctx020	Does the electricity go out?	YES
+q267	ctx020	Do Michael and Jessica light candles?	YES
+q268	ctx020	Does Michael open the refrigerator?	YES
+q269	ctx020	Does Jessica find a flashlight?	YES
+q270	ctx020	Does Michael start a fire?	YES
+q271	ctx020	Do they eat crackers?	YES
+q272	ctx020	Does the electricity come back on?	YES
+q273	ctx020	Is Lucas their son?	YES
+q274	ctx020	Does Lucas cry?	NO
+q275	ctx020	Does Michael close the refrigerator damper?	NO
+q276	ctx020	Does Jessica go outside?	NO
+q277	ctx020	Do they eat a full meal?	NO
+q278	ctx020	Does the power stay out all night?	NO
+q279	ctx020	Is Lucas scared?	NO
+q280	ctx020	Does Michael use the fireplace?	YES
