@@ -135,29 +135,16 @@ Answer:"""
             metrics["context_processing_time"] = cached_time
             logger.info(f"Context cache HIT - reusing cached KV states")
         else:
-            logger.info("Context cache MISS - processing context prefix for caching")
-            start_context = time.time()
-
-            # Process context as prefix to build KV cache
-            # We create a prompt with context only and process it
-            # The prefix must match exactly what will be used in queries for caching to work
-            context_prompt = f"Context: {context}\n\nAnswer the question with only YES or NO based on the context above.\nQuestion:"
-            prefix_input = [TextPrompt(prompt=context_prompt)]
-
-            # This triggers KV cache generation for the context prefix
-            # The enable_prefix_caching=True in LLM initialization enables this
-            self.llm.generate(prefix_input, self.sampling_params)
-
-            context_time = time.time() - start_context
-            metrics["context_processing_time"] = context_time
+            logger.info("Context cache MISS - first query will build prefix cache")
+            # Let vLLM's automatic prefix caching handle KV cache building
+            # First query processes full prompt, vLLM automatically caches prefix
+            # Subsequent queries automatically reuse the cached prefix
+            metrics["context_processing_time"] = 0.0
 
             if use_cache:
-                # Store reference to indicate context has been cached
-                # (vLLM manages the actual KV cache internally)
-                self.context_cache[context] = ([], context_time)
-                logger.info(
-                    f"Context prefix processed and cached in {context_time:.3f}s"
-                )
+                # Store reference to indicate context has been seen
+                self.context_cache[context] = ([], 0.0)
+                logger.info("Context cache initialized - first query will build prefix")
 
         # Process each query using the cached context KV states
         # First query on each context processes the prefix, subsequent queries reuse it
