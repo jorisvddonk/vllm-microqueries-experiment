@@ -203,11 +203,18 @@ The implementation uses vLLM's built-in prefix caching (`enable_prefix_caching=T
 - Stores and reuses KV cache states for those prefixes
 - Avoids redundant computation of shared context embeddings
 
+**Current limitations:**
+- Questions are evaluated independently without considering dependencies
+- No support for conditional question execution (e.g., skipping follow-up questions based on parent answers)
+- No confidence estimation or adaptive questioning strategies
+
 The benchmark tracks:
 - Context processing time (first pass)
 - Per-query evaluation time (with cache hits)
 - Cache hit/miss status
 - Overall accuracy against expected answers
+
+**Future enhancement**: Question trees with adaptive querying could dramatically reduce total queries by 30-70% for complex narratives while maintaining accuracy.
 
 ## Files
 
@@ -221,6 +228,66 @@ The benchmark tracks:
 
 
 ## Future Exploration
+
+### Question Trees and Adaptive Querying
+
+A critical limitation of the current micro-query system is that questions are evaluated independently, without considering dependencies between them. This can lead to inefficient or contradictory queries. For example:
+
+```
+Q1: "Did the protagonist remove any clothing?" → NO (high confidence)
+Q2: "Did the protagonist remove their jacket?" → NO (redundant if Q1 answered NO)
+```
+
+In this scenario, Q2 becomes unnecessary or confusing if Q1 was answered "NO" with high confidence. **Question trees** represent a natural extension where:
+
+1. **Dependency Tracking**: Questions are organized as a DAG (Directed Acyclic Graph) where child questions depend on parent answers
+2. **Conditional Execution**: Questions are only evaluated if their parent questions satisfy specific conditions
+3. **Optimization**: The query order can be optimized to minimize total evaluation time and avoid redundant queries
+4. **Confidence-Based Pruning**: High-confidence answers to parent questions can skip entire subtrees of follow-up questions
+
+**Potential approaches:**
+
+- **Static question trees**: Pre-defined dependency structures encoded in the dataset format
+- **Dynamic dependency detection**: Using a separate model to identify question dependencies on-the-fly
+- **Confidence thresholds**: Skip follow-up questions when parent answer confidence exceeds threshold (e.g., >0.95)
+- **Adaptive questioning**: Reorder questions dynamically based on model confidence and information gain
+- **Multi-model switching**: Use smaller/faster models (e.g., 0.5B params) for initial broad questions to quickly eliminate irrelevant branches, then switch to more accurate models (e.g., 3B params) for follow-up details in relevant branches. This leverages the insight that not all questions require the same model quality - broad screening questions can tolerate lower accuracy if they lead to pruning irrelevant subtrees.
+
+**Example multi-model strategy:**
+```
+Layer 1 (fast 0.5B model): Broad screening questions
+└─ "Did the character wear any clothing?" → NO → SKIP clothing subtree
+    └─ "Did the character remove any clothing?" → YES
+        └─ Layer 2 (accurate 3B model): Detailed questions
+            └─ "What type of clothing was removed?"
+            └─ "When did they remove it?"
+```
+
+**Example question tree structure:**
+```
+Did the protagonist enter a building?
+├─ YES → Did the protagonist enter a shop?
+│   └─ YES → Did the protagonist buy anything?
+│       ├─ YES → What did they buy? (open-ended)
+│       └─ NO → Did they try on clothes?
+└─ NO → Was the protagonist outdoors? → [continue outdoor queries]
+```
+
+**Research questions:**
+- How can we efficiently encode and parse question dependency structures?
+- What confidence thresholds optimally balance accuracy vs. computational efficiency?
+- Can reinforcement learning optimize adaptive questioning strategies?
+- How do question trees interact with KV cache efficiency (fewer queries = less cache reuse)?
+
+Implementing question trees would require:
+- Extended dataset format supporting parent-child relationships
+- Dynamic query scheduling logic in the evaluation pipeline
+- Confidence estimation mechanisms from model outputs
+- Dependency graph traversal and pruning algorithms
+
+If you're interested in implementing adaptive questioning with question trees, this would dramatically improve efficiency for complex narratives and reduce total evaluation time while maintaining or improving accuracy.
+
+### Continuous Confidence Scoring
 
 A natural extension of this binary micro-query system is a nuanced scoring layer that maps coarse discrete outputs (e.g., -1 / 1) onto a continuous spectrum reflecting uncertainty, context ambiguity, or probabilistic reasoning. For example, a micro-query that initially outputs `-1` could be recalibrated to `-0.35` or `-0.8` depending on subtle contextual cues or societal considerations embedded in the input text. Approaches for this could include statistical calibration methods (such as Platt scaling or isotonic regression), secondary model passes to reinterpret discrete labels, or hybrid heuristics that weigh external knowledge and contextual factors. The goal is to preserve interpretability while introducing graded confidence, enabling more fine-grained analysis across large sets of queries.
 
