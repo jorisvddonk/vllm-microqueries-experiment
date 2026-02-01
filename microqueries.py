@@ -96,7 +96,7 @@ Answer:"""
 
     def evaluate_queries(
         self, context: str, questions: List[str], use_cache: bool = True
-    ) -> Tuple[List[str], Dict]:
+    ) -> Tuple[List[str], Dict, List[str]]:
         """
         Evaluate multiple micro-queries on the same context.
 
@@ -111,10 +111,10 @@ Answer:"""
             use_cache: Whether to use prefix caching (default: True)
 
         Returns:
-            Tuple of (answers list, benchmark metrics dict)
+            Tuple of (answers list, benchmark metrics dict, raw outputs list)
         """
         if not questions:
-            return [], {}
+            return [], {}, []
 
         results = []
         metrics = {
@@ -148,6 +148,7 @@ Answer:"""
 
         # Process each query using the cached context KV states
         # First query on each context processes the prefix, subsequent queries reuse it
+        raw_outputs = []
         for i, question in enumerate(questions):
             start_query = time.time()
 
@@ -161,6 +162,7 @@ Answer:"""
             # Parse the answer
             answer = self._parse_answer(outputs[0].outputs[0].text)
             results.append(answer)
+            raw_outputs.append(outputs[0].outputs[0].text)
 
             query_time = time.time() - start_query
             metrics["query_times"].append(query_time)
@@ -183,7 +185,7 @@ Answer:"""
 
         metrics["total_time"] = time.time() - start_total
 
-        return results, metrics
+        return results, metrics, raw_outputs
 
     def clear_cache(self):
         """Clear the context cache."""
@@ -271,6 +273,72 @@ def calculate_accuracy(predictions: List[str], expected: List[str]) -> float:
 
     correct = sum(1 for p, e in zip(predictions, expected) if p == e)
     return correct / len(expected) if expected else 0.0
+
+
+def save_raw_outputs_to_tsv(
+    raw_outputs_data: List[Dict],
+    output_path: str,
+    run_id: str,
+    model_name: str,
+    gpu_memory_utilization: float,
+    use_cache: bool,
+):
+    """
+    Save raw model outputs to TSV file.
+
+    The file contains one row per question with full output details.
+
+    Args:
+        raw_outputs_data: List of question-level dictionaries with raw outputs
+        output_path: Path to output TSV file
+        run_id: Unique identifier for this run (timestamp)
+        model_name: Model name used
+        gpu_memory_utilization: GPU memory utilization setting
+        use_cache: Whether prefix caching was enabled
+    """
+    file_exists = Path(output_path).exists()
+
+    with open(output_path, "a", newline="", encoding="utf-8") as f:
+        fieldnames = [
+            "run_id",
+            "timestamp",
+            "model_name",
+            "gpu_memory_utilization",
+            "use_cache",
+            "context_id",
+            "question_id",
+            "question_text",
+            "expected_answer",
+            "predicted_answer",
+            "raw_output",
+            "query_time",
+        ]
+
+        writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t")
+
+        if not file_exists:
+            writer.writeheader()
+
+        timestamp = datetime.now().isoformat()
+
+        for item in raw_outputs_data:
+            row = {
+                "run_id": run_id,
+                "timestamp": timestamp,
+                "model_name": model_name,
+                "gpu_memory_utilization": gpu_memory_utilization,
+                "use_cache": use_cache,
+                "context_id": item["context_id"],
+                "question_id": item["question_id"],
+                "question_text": item["question_text"],
+                "expected_answer": item["expected_answer"],
+                "predicted_answer": item["predicted_answer"],
+                "raw_output": item["raw_output"],
+                "query_time": item["query_time"],
+            }
+            writer.writerow(row)
+
+    logger.info(f"Raw outputs saved to {output_path}")
 
 
 def save_results_to_tsv(
@@ -487,6 +555,12 @@ def main():
     parser.add_argument(
         "--no-save", action="store_true", help="Skip saving results to TSV files"
     )
+    parser.add_argument(
+        "--raw-output",
+        type=str,
+        default="./raw_outputs.tsv",
+        help="Path to output raw model outputs TSV file (default: ./raw_outputs.tsv)",
+    )
 
     args = parser.parse_args()
 
@@ -525,6 +599,7 @@ def main():
     total_correct = 0
     total_questions = 0
     all_results = []
+    all_raw_outputs = []
     start_benchmark = time.time()
     use_cache = not args.no_cache
 
@@ -548,7 +623,7 @@ def main():
         question_ids = [q["id"] for q in ctx_questions]
 
         # Evaluate queries
-        answers, metrics = evaluator.evaluate_queries(
+        answers, metrics, raw_outputs = evaluator.evaluate_queries(
             context, question_texts, use_cache=use_cache
         )
 
@@ -591,6 +666,26 @@ def main():
                 "metrics": metrics,
             }
         )
+
+        for qid, qtext, pred, exp, raw, qtime in zip(
+            question_ids,
+            question_texts,
+            answers,
+            expected_answers,
+            raw_outputs,
+            metrics["query_times"],
+        ):
+            all_raw_outputs.append(
+                {
+                    "context_id": ctx_id,
+                    "question_id": qid,
+                    "question_text": qtext,
+                    "expected_answer": exp,
+                    "predicted_answer": pred,
+                    "raw_output": raw,
+                    "query_time": qtime,
+                }
+            )
 
     # Print overall summary
     overall_accuracy = total_correct / total_questions if total_questions > 0 else 0.0
@@ -638,6 +733,14 @@ def main():
             total_correct=total_correct,
             total_questions=total_questions,
         )
+        save_raw_outputs_to_tsv(
+            raw_outputs_data=all_raw_outputs,
+            output_path=args.raw_output,
+            run_id=run_id,
+            model_name=args.model,
+            gpu_memory_utilization=args.gpu_memory_utilization,
+            use_cache=use_cache,
+        )
         save_summary_to_tsv(
             summary_path=args.summary,
             run_id=run_id,
@@ -655,6 +758,7 @@ def main():
         print(f"\nResults saved:")
         print(f"  Detailed: {args.output}")
         print(f"  Summary: {args.summary}")
+        print(f"  Raw outputs: {args.raw_output}")
 
     return all_results
 
